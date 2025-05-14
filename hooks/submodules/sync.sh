@@ -7,6 +7,12 @@ if [ "$(git config --get agx.autosync)" = "false" ]; then
     exit 0
 fi
 
+# Check if we're running from inside the .agx repository itself
+REPO_NAME=$(basename "$(git rev-parse --show-toplevel)")
+if [ "$REPO_NAME" = ".agx" ]; then
+    exit 0
+fi
+
 git submodule sync
 git submodule update --init --remote .agx
 
