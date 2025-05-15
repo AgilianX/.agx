@@ -19,6 +19,7 @@ Repository: .agx
   A draft of the commit message must be generated before running the command.
 - Follow the [Commit Specification](../docs/conventions/Commits.md) for commit messages.
 - When running ai workflows with git submodules, check the location of the terminal if a command fails and try again.
+- When running a workflow for a submodule, change into the submodule directory and run the workflow there.
 
 ## Documentation
 - Use emojis sparingly and only when appropriate.

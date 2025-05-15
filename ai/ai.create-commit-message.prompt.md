@@ -12,6 +12,8 @@ Generate a standards-compliant commit message and execute the commit without use
 ---
 
 ## Step 1: Analysis
+- Before anything, run `git agx-ai-commit-context`, to gather information about the current commit context.
+  - You can and should run this command whenever you are unsure about the location of the terminal or if commands fail.
 - Run `git agx-ai-diff-staged` to analyze staged changes
 - You can see the staged files with `git agx-ai-status`
 - List open issues using the `#list_issues` tool
