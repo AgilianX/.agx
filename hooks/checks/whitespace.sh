@@ -7,7 +7,7 @@ for file in "$@"; do
     fi
     # Skip binary/image files and other known types that may have trailing whitespace
     case "$file" in
-        *.png|*.jpg|*.jpeg|*.gif|*.ico|*.zip|*.gz|*.tar|*.rar|*.7z|*.exe|*.dll|*.pdf|*.mp3|*.mp4|*.mov|*.avi|*.bin)
+        *.png|*.jpg|*.jpeg|*.gif|*.ico|*.zip|*.gz|*.tar|*.rar|*.7z|*.exe|*.dll|*.pdf|*.mp3|*.mp4|*.mov|*.avi|*.bin|*.fig)
             continue
             ;;
     esac
