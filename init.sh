@@ -56,8 +56,6 @@ echo "📚 See $README_PATH for more information on repository configuration"
 if [ "$REPO_NAME" != ".agx" ]; then
   CURRENT_DIR=$(pwd)
 
-  echo $CURRENT_DIR
-
   case "$CURRENT_DIR" in
     *.agx)
       # Already running from .agx, skip to avoid recursion
@@ -66,7 +64,10 @@ if [ "$REPO_NAME" != ".agx" ]; then
       AGX_INIT_SCRIPT="$BASE_PATH/init.sh"
       if [ -f "$AGX_INIT_SCRIPT" ]; then
         echo "    Also running .agx submodule initialization script..."
+        # Change directory to .agx before running the script, then return
+        pushd "$BASE_PATH" > /dev/null
         bash "$AGX_INIT_SCRIPT"
+        popd > /dev/null
       fi
       ;;
   esac

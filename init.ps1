@@ -50,6 +50,7 @@ if (-not $isAgxRepo) {
     if (-not $isInAgx) {
         $agxInitScript = Join-Path $basePath 'init.ps1'
         Write-Host '    Also running .agx submodule initialization script...' -ForegroundColor DarkGray
+        Push-Location $basePath
         & $agxInitScript
     }
 }
