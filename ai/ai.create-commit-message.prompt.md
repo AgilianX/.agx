@@ -2,7 +2,7 @@
 Generate a standards-compliant commit message and execute the commit without user interaction beyond showing the final draft.
 
 **IMPORTANT**
-- Follow the [Commits.md](../../.agx/docs/conventions/Commits.md) specification precisely.
+- Follow the [Commits.md](../docs/conventions/Commits.md) specification precisely.
 - Select one appropriate `type` per commit based on the most significant change.
 - For AI-related files (prompts, workflows, configs), prioritize the `ai` type.
 - Use context from relevant issues in the commit message when applicable.
