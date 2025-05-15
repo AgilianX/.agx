@@ -15,6 +15,7 @@ agx-ai-commit:commit
 
 # Repository context awareness for AI agents
 agx-ai-commit-context:!sh -c 'REPO_ROOT=$(git rev-parse --show-toplevel); REPO_NAME=$(basename "$REPO_ROOT"); if [ "$REPO_NAME" = ".agx" ]; then sh "$REPO_ROOT/hooks/checks/repo_info.sh"; else sh "$REPO_ROOT/.agx/hooks/checks/repo_info.sh"; fi'
+agx-update:!git submodule update --init --remote --merge .agx
 
 # Add more aliases here, one per line
 # Example: agx-st:status -s

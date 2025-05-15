@@ -14,6 +14,6 @@ if [ "$REPO_NAME" = ".agx" ]; then
 fi
 
 git submodule sync
-git submodule update --init --remote .agx
+git agx-update
 
 echo "✅ AgX Submodule updated successfully!"
