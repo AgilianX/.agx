@@ -54,16 +54,13 @@ remove obvious or repetitive information and rephrase to shorten the content whe
 - When gathering context for sumbodule updates:
   1. Change into submodule directory: `cd <submodule-path>`
   2. Inspect the git log between the commit hashes to gather context.
-  3. Return to main repo: `cd ..`
+  3. Return to main repo: `cd ..`, do not forget to return to the main repo!
 
 **Scopes:**
 - You can use `git agx-ai-lg` to get inspiration on the commit message scopes and types to keep things consistent.
-- You can also cross reference the output of `git agx-ai-lg` with the files present in `docs/research` for `learn(<scope>)` type commits.
 
 **Reminders:**
 - Avoid assumptions. Omit optional metadata if unsure.
 - Only use the staged files to determine what the commit addresses.
 - Never leak implementation details in commit messages.
 - Prioritize clarity and full compliance with the [Commits.md](../../.agx/docs/conventions/Commits.md) specification.
-
-Worked best on: Claude3.7 Sonnet

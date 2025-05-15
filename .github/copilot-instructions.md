@@ -18,10 +18,7 @@ Repository: .agx
 - Always use `git agx-ai-commit` instead of `git commit` for commits made by AI.
   A draft of the commit message must be generated before running the command.
 - Follow the [Commit Specification](../docs/conventions/Commits.md) for commit messages.
-- When starting a workflow, check the location of the terminal.
-- When running ai workflows with git submodules, ensure you are in the correct directory.
-  - git operations on the sub module repository should be done from the sub module directory.
-  - git operations on the consuming repository should be done from the consuming repository directory.
+- When running ai workflows with git submodules, check the location of the terminal if a command fails and try again.
 
 ## Documentation
 - Use emojis sparingly and only when appropriate.
