@@ -52,20 +52,22 @@ echo "🎉 Repository initialization complete!"
 echo "📚 See $README_PATH for more information on repository configuration"
 
 # If this is a consuming repo (not .agx itself), also run init.sh in the .agx submodule
-# Only run init.sh in the submodule if not already running from .agx
-SCRIPT_PATH="$(readlink -f "$0" 2>/dev/null || realpath "$0" 2>/dev/null || echo "$0")"
-case "$SCRIPT_PATH" in
-  *.agx*)
-    # Already running from .agx, skip to avoid recursion
-    :
-    ;;
-  *)
-    if [ "$REPO_NAME" != ".agx" ]; then
+# Only run init.sh in the submodule if the current working directory is not inside .agx
+if [ "$REPO_NAME" != ".agx" ]; then
+  CURRENT_DIR=$(pwd)
+
+  echo $CURRENT_DIR
+
+  case "$CURRENT_DIR" in
+    *.agx)
+      # Already running from .agx, skip to avoid recursion
+      ;;
+    *)
       AGX_INIT_SCRIPT="$BASE_PATH/init.sh"
       if [ -f "$AGX_INIT_SCRIPT" ]; then
         echo "    Also running .agx submodule initialization script..."
         bash "$AGX_INIT_SCRIPT"
       fi
-    fi
-    ;;
-esac
+      ;;
+  esac
+fi

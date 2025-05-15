@@ -44,11 +44,11 @@ Write-Host "📚 See $readmePath for more information on repository configuratio
 
 # If this is a consuming repo (not .agx itself), also run init.ps1 in the .agx submodule
 if (-not $isAgxRepo) {
-    # Only run init.ps1 in the submodule if not already running from .agx
-    $script:currentScriptPath = $MyInvocation.MyCommand.Path
-    $script:isInAgx = $currentScriptPath -like '*\.agx*'
+    # Only run init.ps1 in the submodule if the current working directory is not inside .agx
+    $currentLocation = Get-Location
+    $isInAgx = $currentLocation.Path -like '*\.agx'
     if (-not $isInAgx) {
-        $script:agxInitScript = Join-Path $basePath 'init.ps1'
+        $agxInitScript = Join-Path $basePath 'init.ps1'
         Write-Host '    Also running .agx submodule initialization script...' -ForegroundColor DarkGray
         & $agxInitScript
     }

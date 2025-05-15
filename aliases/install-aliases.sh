@@ -33,9 +33,11 @@ while read -r line; do
     continue
   fi
 
-  # Parse the alias name and value using : as delimiter
-  alias_key=$(echo "$line" | cut -d':' -f1 | xargs)
-  alias_value=$(echo "$line" | cut -d':' -f2- | xargs)
+  # Parse the alias name and value using : as delimiter (split only on the first :)
+  alias_key=$(echo "$line" | awk -F':' '{print $1}' | xargs)
+  alias_value=$(echo "$line" | awk -F':' '{sub($1":", ""); print}' | xargs)
+
+# FIX: this prints with valid aliases, research!!
 
   if [ -z "$alias_key" ] || [ -z "$alias_value" ]; then
     echo "  ⚠️ Warning: Invalid alias definition: $line"
