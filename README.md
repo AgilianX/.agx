@@ -80,8 +80,10 @@ git commit -m "chore(agx): pin tooling to specific commit"
 To manually update the submodule (if automatic updates are disabled):
 
 ```bash
-git submodule update --remote .agx
+git submodule update --remote --merge .agx
 ```
+
+Or just use the alias `git agx-update` to update the submodule if AgX aliases are installed.
 
 ## Repository Modes
 
