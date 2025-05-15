@@ -3,6 +3,9 @@
 # This script installs Git aliases from a shared aliases file
 # Usage: .\install-aliases.ps1 [path\to\aliases\file]
 
+
+
+
 # Determine repository root and name
 try {
     $script:repoRoot = git rev-parse --show-toplevel

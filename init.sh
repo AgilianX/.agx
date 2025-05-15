@@ -17,6 +17,7 @@ REPO_NAME=$(basename "$REPO_ROOT")
 echo "📦 Initializing repository setup for '$REPO_NAME'..."
 
 # Determine if we're in the .agx repository itself or a repository with .agx as a submodule
+
 BASE_PATH="$REPO_ROOT/.agx"
 if [ "$REPO_NAME" = ".agx" ]; then
     BASE_PATH=$REPO_ROOT
@@ -49,3 +50,10 @@ fi
 
 echo "🎉 Repository initialization complete!"
 echo "📚 See $README_PATH for more information on repository configuration"
+
+# If this is a consuming repo (not .agx itself), also run init.sh in the .agx submodule
+if [ "$REPO_NAME" != ".agx" ]; then
+    AGX_INIT_SCRIPT="$BASE_PATH/init.sh"
+    echo "↪️  Also running .agx submodule initialization script..."
+    bash "$AGX_INIT_SCRIPT"
+fi
