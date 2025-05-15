@@ -49,7 +49,7 @@ if (-not $isAgxRepo) {
     $isInAgx = $currentLocation.Path -like '*\.agx'
     if (-not $isInAgx) {
         $agxInitScript = Join-Path $basePath 'init.ps1'
-        Write-Host '    Also running .agx submodule initialization script...' -ForegroundColor DarkGray
+        Write-Host "`n    Running the init script in the .agx submodule`n" -ForegroundColor DarkGray
         Push-Location $basePath
         & $agxInitScript
     }

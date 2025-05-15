@@ -63,7 +63,7 @@ if [ "$REPO_NAME" != ".agx" ]; then
     *)
       AGX_INIT_SCRIPT="$BASE_PATH/init.sh"
       if [ -f "$AGX_INIT_SCRIPT" ]; then
-        echo "    Also running .agx submodule initialization script..."
+        echo "\n    Running the init script in the .agx submodule...\n"
         # Change directory to .agx before running the script, then return
         pushd "$BASE_PATH" > /dev/null
         bash "$AGX_INIT_SCRIPT"
