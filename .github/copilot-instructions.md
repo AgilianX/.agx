@@ -19,10 +19,9 @@ Repository: .agx
   A draft of the commit message must be generated before running the command.
 - Follow the [Commit Specification](../docs/conventions/Commits.md) for commit messages.
 - When starting a workflow, check the location of the terminal.
-  When running ai workflows on submodules, ensure you are in the correct submodule directory.
-  - At the start of a workflow targeting a submodule, `cd` into the submodule directory once.
-  - Run all subsequent commands in that workflow from the current directory without additional `cd`.
-  - Only `cd` again when returning to the workflow root or changing context.
+- When running ai workflows with git submodules, ensure you are in the correct directory.
+  - git operations on the sub module repository should be done from the sub module directory.
+  - git operations on the consuming repository should be done from the consuming repository directory.
 
 ## Documentation
 - Use emojis sparingly and only when appropriate.

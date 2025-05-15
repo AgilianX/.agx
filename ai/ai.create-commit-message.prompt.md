@@ -50,6 +50,12 @@ remove obvious or repetitive information and rephrase to shorten the content whe
 
 ---
 
+**Git Submodules**
+- When gathering context for sumbodule updates:
+  1. Change into submodule directory: `cd <submodule-path>`
+  2. Inspect the git log between the commit hashes to gather context.
+  3. Return to main repo: `cd ..`
+
 **Scopes:**
 - You can use `git agx-ai-lg` to get inspiration on the commit message scopes and types to keep things consistent.
 - You can also cross reference the output of `git agx-ai-lg` with the files present in `docs/research` for `learn(<scope>)` type commits.
