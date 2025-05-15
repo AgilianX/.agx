@@ -24,7 +24,7 @@ Generate a standards-compliant commit message and execute the commit without use
 - Use `#get_issue <number>` for detailed context if needed
 - Include `@issue:#XXX` only when changes directly resolve or address an issue
 - If any issues are related and included in the commit:
-  - Display information about the issues in the chat before continuing to drafting the commit message
+  - Display a short summary about the issues in the chat before continuing to drafting the commit message
   - Continue drafting the commit message only AFTER displaying the issue information in the chat (if any).
 
 ## Step 3: Message Formation
