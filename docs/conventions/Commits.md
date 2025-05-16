@@ -15,14 +15,14 @@ A commit message consists of:
 - <bullet describing why or how, if relevant>
 
 BREAKING CHANGE: <optional breaking change description>
-<metadata @key:value>
+<metadata +key:value>
 ```
 
 Notes:
 
 - **Scope** is optional but recommended.
 - **BREAKING CHANGE** is optional but must appear before any metadata.
-- **Metadata** are prefixed with `@` and placed on the final line.
+- **Metadata** are prefixed with `+` and placed on the final lines.
 
 ---
 
@@ -72,7 +72,9 @@ Merge commits must follow the same enhanced standard, with emphasis on clarity, 
 - Optional list of key changes or areas affected
 - Credit to the author of the branch (if external)
 
-@semver:<level> @nuke:<target> @issue:<id>
++semver:<level>
++nuke:<target>
++issue:#<id>
 ```
 
 ---
@@ -81,21 +83,62 @@ Merge commits must follow the same enhanced standard, with emphasis on clarity, 
 
 All machine-readable metadata must be placed in the **footer**, on the final line(s) of the commit message. Each entry:
 
-- Begins with `@`
+- Begins with `+`
 - Uses a `key:value` format
-- Is separated by spaces (single-line preferred)
+- Is separated by spaces or new lines
 
 [gitVersion]: https://gitversion.net
-[gitIssues]: https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues
-[azureDevOpsIssues]: https://learn.microsoft.com/en-us/azure/devops/boards/work-items/about-work-items
 
-| Metadata Key | Purpose                                                                                       | Example                           |
-|--------------|-----------------------------------------------------------------------------------------------|-----------------------------------|
-| `@semver`    | Overrides [GitVersion][gitVersion] version bumping                                            | `@semver:minor`                   |
-| `@issue`     | Links to relevant issues or prs (e.g. [GitHub][gitIssues], [Azure DevOps][azureDevOpsIssues]) | `@issue:#342`, `@issue:#123,#234` |
-| `@nuke`      | Triggers [Nuke](https://nuke.build/) build targets in CI/CD pipelines                         | `@nuke:feature`                   |
+### Control version bumping with `+semver`
 
-This list is extensible — future metadata tags may be added as tooling evolves.
+Use `+semver` to explicitly control how [GitVersion][gitVersion] bumps the version for a commit. Place this in the metadata footer. This is useful for ensuring the correct semantic version is applied, regardless of the commit type. This overrides the default configured behavior of GitVersion.
+
+| Level                  | Pattern            |
+|------------------------|--------------------|
+| Marjor                 | `major`/`breaking` |
+| Minor                  | `minor`/`feature`  |
+| Patch                  | `patch`/`fix`      |
+| Skip - no version bump | `skip`/`none`      |
+
+**Example**: `+semver:minor`
+
+---
+
+### Link to issues or pull requests with `+issue`
+
+Use `+issue` to reference one or more issues or pull requests related to the commit. Use `#` for issues/PRs in the same repository. For external issues, provide the full URL.
+
+Most IDEs and GitHub will autocomplete issue numbers when you type `#` in the commit message.
+
+**Examples**:
+
+- `+issue:#342`
+- `+issue:#123,#234`
+- `+issue:https://github.com/org/repo/issues/1`
+
+---
+
+### Trigger CI/CD Nuke build targets with `+nuke`
+
+Use `+nuke` to trigger specific [Nuke](https://nuke.build/) build targets in your CI/CD pipeline. This can be used by automation to run or test only the specified targets.
+
+**Example**:
+
+- `+nuke:feature`
+- `+nuke:feature,test`
+
+---
+
+### Request a review from a GitHub user with `+review`
+
+Use `+review` to request a review from a specific GitHub user. Mention the reviewer with `@githubusername`. Most IDEs and GitHub will autocomplete usernames when you type `@` in the commit message.
+
+**Example**: `+review:@Xeythhhh`
+
+---
+
+> [!NOTE]
+> This list is extensible — future metadata tags may be added as tooling evolves.*
 
 ---
 
@@ -124,7 +167,7 @@ chore(assets): move icons to Icons folder
 - Cleaned up folder structure for clarity
 - Updated all import paths to match
 
-@issue:122 @nuke:test
++issue:122 +nuke:test
 ```
 
 ### 🔴 Commit With Breaking Change + Metadata
@@ -136,14 +179,17 @@ feat(auth): implement OAuth2 provider support
 - Refactored login and token validation logic
 
 BREAKING CHANGE: Existing SSO flows must be updated
-@semver:minor @issue:#340,#420 @nuke:feature
++semver:minor
++issue:#340,#420
++nuke:feature
++review:@Xeythhhh
 ```
 
 ---
 
 ### AI Type
 
-AI agent instructions, prompts, workflows, or configuration files (e.g., `ai.*`, `*.prompt.md`, or Copilot-related files) should be committed with the `ai` type. This includes any changes to the AI agent's behavior, configuration, or instructions.
+AI agent instructions, prompts, workflows, or configuration files (e.g., `ai.*`, `*.prompt.md`, or Copilot-related files) should be committed with the `ai` type. This includes any changes to the AI agent's behavior, configuration, or instructions. Use the `+` prefix for any machine-readable metadata in the footer (e.g., `+semver:minor`).
 
 ### Clarification on Commit Types with Mixed Changes
 
