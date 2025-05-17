@@ -96,7 +96,11 @@ if (-not $isInAgxRoot) {
     $track = Get-GitSubmoduleConfig-Setting 'track' 'master'
     Write-Host "|     Track: $track" -ForegroundColor DarkGray
 
-    # git -C .agx checkout master
+    Write-Host '|     Updating AgX ...' -ForegroundColor DarkGray
+    $checkoutOutput = git -C .agx checkout $track 2>&1
+    foreach ($line in $checkoutOutput) {
+        Write-Host "|         $line" -ForegroundColor DarkGray
+    }
 }
 
 if ($(Get-GitAgx-Setting 'useHooks') -eq 'true') {
