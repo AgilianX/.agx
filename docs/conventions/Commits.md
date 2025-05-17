@@ -1,6 +1,9 @@
 # Commit Standard
 
-This document outlines our internal commit message standard, designed to improve clarity, automation, and collaboration across teams. It is based on the [Conventional Commits](https://www.conventionalcommits.org/) specification and extended with ergonomic conventions that support semantic versioning, CI/CD workflows, changelogs, and more.
+This document outlines our internal commit message standard, designed to improve clarity, automation, and collaboration across teams.
+
+> [!NOTE]
+> It is based on the [Conventional Commits](https://www.conventionalcommits.org/) specification and extended with ergonomic conventions that support semantic versioning, CI/CD workflows, changelogs, and more.
 
 ---
 
@@ -9,20 +12,25 @@ This document outlines our internal commit message standard, designed to improve
 A commit message consists of:
 
 ```xml
-<type>(scope): <summary>
+<type>(<scope>): <summary  short description>
 
+<body>
 - <bullet describing what changed>
 - <bullet describing why or how, if relevant>
+- <bullet describing any other relevant information>
+</body>
 
-BREAKING CHANGE: <optional breaking change description>
 <metadata +key:value>
 ```
 
 Notes:
 
-- **Scope** is optional but recommended.
-- **BREAKING CHANGE** is optional but must appear before any metadata.
+- **Scope** is optional but recommended. Omit the brackets if not used.
 - **Metadata** are prefixed with `+` and placed on the final lines.
+
+> [!WARNING]
+> Multiple scopes are allowed, separated by commas. For example: `feat(auth,ui): add login button`.
+> Avoid using multiple types in a single commit message and use more atomic commits when possible.
 
 ---
 
@@ -44,7 +52,8 @@ Notes:
 | `docs`     | Documentation of the source code or solutions provided in the repo |
 | `learn`    | Documentation related to research                                  |
 
-> Note: If the commit has [multiple types](#clarification-on-commit-types-with-mixed-changes), use the most relevant one. For example, if adds a feature,
+> [!TIP]
+> If the commit has [multiple types](#clarification-on-commit-types-with-mixed-changes), use the most relevant one. For example, if adds a feature,
 and documents it, use `feat`.
 
 ---
@@ -73,7 +82,6 @@ Merge commits must follow the same enhanced standard, with emphasis on clarity, 
 - Credit to the author of the branch (if external)
 
 +semver:<level>
-+nuke:<target>
 +issue:#<id>
 ```
 
@@ -81,21 +89,27 @@ Merge commits must follow the same enhanced standard, with emphasis on clarity, 
 
 ## 🧩 Metadata Footer Format
 
-All machine-readable metadata must be placed in the **footer**, on the final line(s) of the commit message. Each entry:
+> [!NOTE]
+> All machine-readable metadata must be placed in the **footer**, on the final line(s) of the commit message.
+
+Each entry:
 
 - Begins with `+`
 - Uses a `key:value` format
-- Is separated by spaces or new lines
+- Is separated by new lines
 
 [gitVersion]: https://gitversion.net
 
 ### Control version bumping with `+semver`
 
-Use `+semver` to explicitly control how [GitVersion][gitVersion] bumps the version for a commit. Place this in the metadata footer. This is useful for ensuring the correct semantic version is applied, regardless of the commit type. This overrides the default configured behavior of GitVersion.
+Use `+semver` to explicitly control how [GitVersion][gitVersion] bumps the version for a commit. Place this in the metadata footer. This is useful for ensuring the correct semantic version is applied, regardless of the commit type.
+
+> [!NOTE]
+> This overrides the default configured behavior of GitVersion.
 
 | Level                  | Pattern            |
 |------------------------|--------------------|
-| Marjor                 | `major`/`breaking` |
+| Major                  | `major`/`breaking` |
 | Minor                  | `minor`/`feature`  |
 | Patch                  | `patch`/`fix`      |
 | Skip - no version bump | `skip`/`none`      |
@@ -108,7 +122,8 @@ Use `+semver` to explicitly control how [GitVersion][gitVersion] bumps the versi
 
 Use `+issue` to reference one or more issues or pull requests related to the commit. Use `#` for issues/PRs in the same repository. For external issues, provide the full URL.
 
-Most IDEs and GitHub will autocomplete issue numbers when you type `#` in the commit message.
+> [!NOTE]
+> Most IDEs and GitHub will autocomplete issue numbers when you type `#` in the commit message.
 
 **Examples**:
 
@@ -118,9 +133,12 @@ Most IDEs and GitHub will autocomplete issue numbers when you type `#` in the co
 
 ---
 
-### Trigger CI/CD Nuke build targets with `+nuke`
+### Trigger CI/CD Nuke build targets with `+nuke` (planned, not implemented)
 
-Use `+nuke` to trigger specific [Nuke](https://nuke.build/) build targets in your CI/CD pipeline. This can be used by automation to run or test only the specified targets.
+Use `+nuke` to trigger specific [Nuke](https://nuke.build/) build targets in your CI/CD pipeline.
+
+> [!TIP]
+> This can be used by automation to run or test only the specified targets.
 
 **Example**:
 
@@ -131,14 +149,36 @@ Use `+nuke` to trigger specific [Nuke](https://nuke.build/) build targets in you
 
 ### Request a review from a GitHub user with `+review`
 
-Use `+review` to request a review from a specific GitHub user. Mention the reviewer with `@githubusername`. Most IDEs and GitHub will autocomplete usernames when you type `@` in the commit message.
+Use `+review` to request a review from a specific GitHub user. Mention the reviewer with `@githubusername`.
+
+> [!NOTE]
+> Most IDEs and GitHub will autocomplete usernames when you type `@` in the commit message.
 
 **Example**: `+review:@Xeythhhh`
 
 ---
 
-> [!NOTE]
-> This list is extensible — future metadata tags may be added as tooling evolves.*
+### Signal a Breaking change with `+BREAKING`
+
+Use `+BREAKING` to indicate a breaking change in the commit.
+This is useful for tooling that needs to identify breaking changes in the commit history.
+
+> [!CAUTION]
+> Append a '!' to the type in the header to indicate a breaking change. This is a standard practice in conventional commits.
+
+**Example**:
+
+```commit
+feat(auth)!: implement OAuth2 provider support
+
+- Added external identity provider integration
+
++BREAKING: Existing SSO flows must be updated
+```
+
+---
+
+*This list is extensible — future metadata tags may be added as tooling evolves.*
 
 ---
 
@@ -147,10 +187,10 @@ Use `+review` to request a review from a specific GitHub user. Mention the revie
 ### 🟢 Minimal Commit
 
 ```text
-feat(core): add login button
+feat: add login button
 ```
 
-### 🟡 Typical Commit With Bullet Points
+### 🟡 Typical Commit With Body
 
 ```text
 fix(auth): prevent double form submission
@@ -159,7 +199,7 @@ fix(auth): prevent double form submission
 - Prevents rapid keypresses on Enter
 ```
 
-### 🔵 Commit With Metadata Footer
+### 🔵 Commit With single Metadata
 
 ```text
 chore(assets): move icons to Icons folder
@@ -167,18 +207,30 @@ chore(assets): move icons to Icons folder
 - Cleaned up folder structure for clarity
 - Updated all import paths to match
 
-+issue:122 +nuke:test
++issue:122
 ```
 
-### 🔴 Commit With Breaking Change + Metadata
+### 🟣 Commit With multiple Metadata
 
 ```text
-feat(auth): implement OAuth2 provider support
+chore(assets): move icons to Icons folder
+
+- Cleaned up folder structure for clarity
+- Updated all import paths to match
+
++issue:122
++nuke:test
+```
+
+### 🔴 Commit With multiple Metadata, including BREAKING CHANGE
+
+```text
+feat(auth)!: implement OAuth2 provider support
 
 - Added external identity provider integration
 - Refactored login and token validation logic
 
-BREAKING CHANGE: Existing SSO flows must be updated
++BREAKING: Existing SSO flows must be updated
 +semver:minor
 +issue:#340,#420
 +nuke:feature
@@ -189,7 +241,10 @@ BREAKING CHANGE: Existing SSO flows must be updated
 
 ### AI Type
 
-AI agent instructions, prompts, workflows, or configuration files (e.g., `ai.*`, `*.prompt.md`, or Copilot-related files) should be committed with the `ai` type. This includes any changes to the AI agent's behavior, configuration, or instructions. Use the `+` prefix for any machine-readable metadata in the footer (e.g., `+semver:minor`).
+AI agent instructions, prompts, workflows, or configuration files (e.g., `ai.*`, `*.prompt.md`, or Copilot-related files) should be committed with the `ai` type.
+
+> [!NOTE]
+> This includes any changes to the AI agent's behavior, configuration, or instructions.
 
 ### Clarification on Commit Types with Mixed Changes
 
@@ -200,4 +255,5 @@ If a commit contains both documentation and code changes, the commit type should
 - If the commit adds, updates, renames or removes AI agent instructions, prompts, workflows, or configuration (such as ai-instructions.*, or copilot related files), use `ai`.
 - For research documentation, between `docs` and `learn`, use `learn`.
 
-The `docs` or `learn` types should only be used for commits that contain **only** documentation changes, with no other code modifications, and do not affect AI agent instructions, prompts, workflows, or configuration. They have the lowest significance. They should not be used if there are any other types of changes present.
+> [!WARNING]
+> The `docs` or `learn` types should only be used for commits that contain **only** documentation changes, with no other code modifications, and do not affect AI agent instructions, prompts, workflows, or configuration. They have the lowest significance. They should not be used if there are any other types of changes present.

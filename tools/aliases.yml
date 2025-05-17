@@ -1,0 +1,34 @@
+agx-setup-test: status
+agx-update: "!pwsh -NoProfile -ExecutionPolicy Bypass -File .agx/tools/update.ps1 $args"
+agx-revert-update: "!pwsh -NoProfile -ExecutionPolicy Bypass -File .agx/tools/revert-update.ps1"
+agx-ai-status: status
+agx-ai-commit: commit
+agx-ai-lg: "!git --no-pager log -n 100"
+agx-ai-diff-staged: "!git --no-pager diff --staged"
+agx-ai-git-context: "!pwsh -NoProfile -ExecutionPolicy Bypass -File .agx/tools/repo_info.ps1"
+
+# Demo aliases
+# These aliases only work in the .agx repository
+agx-demo-1: status
+agx-demo-2: "!git log --oneline --graph --decorate --all"
+agx-demo-3:
+  shell: pwsh
+  script: |
+    Write-Host "Hello"
+    if ($true) {
+      Write-Host "World"
+    }
+    else {
+      Write-Host "You should not see this!"
+    }
+    Write-Host "From multi-line powershell git alias!"
+agx-demo-4:
+  shell: bash
+  script: |
+    echo "Hello"
+    if true; then
+      echo "World"
+    else
+      echo "You should not see this!"
+    fi
+    echo "From multi-line bash git alias!"

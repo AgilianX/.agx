@@ -1,9 +1,8 @@
-# Copilot Instructions
-
-## Repository
+# Repository
 
 Owner: AgilianX
 Repository: .agx
+Goal: Collection of development tools, conventions, and automation for AgilianX repositories to be used as a git submodule
 
 ## IMPORTANT
 - When following a prompt that specifies a git command with the `agx-*` or `agx-ai-*` prefix, run it EXACTLY as described,
@@ -24,4 +23,4 @@ Repository: .agx
 - Use emojis sparingly and only when appropriate.
 - Avoid HTML in markdown files.
 - All Documentation files except conventions must include a footer with the following information:
-  - Related source files (if applicable)
+  - Related source files (if applicable), using actual Markdown links to the files (not just plain text paths)
