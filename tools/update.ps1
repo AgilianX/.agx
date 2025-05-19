@@ -1,3 +1,5 @@
+param([string]$TrackRef)
+
 # typically invoked by git agx-update
 $ErrorActionPreference = 'Stop'
 $repoRoot = git rev-parse --show-toplevel
@@ -14,7 +16,6 @@ if ($currentCommitHash) {
 }
 
 # Determine track value: argument takes precedence, fallback to .gitmodules
-param([string]$TrackRef)
 if ($TrackRef) {
     $track = $TrackRef
     git config -f .gitmodules "submodule.$submodule.track" $track
