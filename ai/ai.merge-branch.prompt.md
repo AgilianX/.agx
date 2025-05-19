@@ -53,7 +53,7 @@ remove obvious or repetitive information, and rephrase to shorten the content wh
 - Run `git agx-ai-merge {source-branch}` to open the merge editor with the message for review AFTER:
     - 1. displaying the draft
     - 2. editing the prepare-commit-msg file.
-- Clear the `ai-comit.txt` file after the merge is completed to avoid stale messages.
+- Remove the content of the `ai-comit.txt` file after the merge is completed to avoid stale messages.
 - At the end of the workflow, set the environment variable `$env:AGX_AI_WORKFLOW = 'false'`.
 
 ---

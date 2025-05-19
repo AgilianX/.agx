@@ -49,7 +49,7 @@ remove obvious or repetitive information and rephrase to shorten the content whe
 - Run `git agx-ai-commit` to open the editor with the message for review AFTER:
     - 1. displaying the draft
     - 2. editing the prepare-commit-msg file.
-- Clear the `ai-comit.txt` file after the commit is completed to avoid stale messages.
+- Remove the content of the `ai-comit.txt` file after the commit is completed to avoid stale messages.
 - At the end of the workflow, set the environment variable `$env:AGX_AI_WORKFLOW = 'false'`.
 
 ---
