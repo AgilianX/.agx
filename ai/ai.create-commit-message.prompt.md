@@ -65,7 +65,7 @@ remove obvious or repetitive information and rephrase to shorten the content whe
 - You can use `git agx-ai-lg` to get inspiration on the commit message scopes and types to keep things consistent.
 
 **Reminders:**
-- Avoid assumptions. Omit optional metadata if unsure.
+- Avoid assumptions. Include additional metadata only if instructed.
 - Only use the staged files to determine what the commit addresses.
 - Never leak implementation details in commit messages.
 - Prioritize clarity and full compliance with the [Commits.md](../../.agx/docs/conventions/Commits.md) specification.
