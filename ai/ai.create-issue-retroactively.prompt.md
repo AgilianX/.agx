@@ -1,4 +1,5 @@
-Your goal: Produce a fully compliant retroactive issue efficiently. Follow these steps exactly.
+# Goal
+Produce a fully compliant retroactive issue efficiently. Follow these steps exactly.
 
 **IMPORTANT**
 - Retroactive Issues are made up: We pretend to write a new issue with a spec expecting our staged changes to satisfy them. Do not leak implementation details.

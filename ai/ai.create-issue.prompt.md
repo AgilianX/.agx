@@ -1,4 +1,5 @@
-Your goal: Produce a fully compliant issue efficiently. Follow these steps exactly.
+# Goal
+Produce a fully compliant issue efficiently. Follow these steps exactly.
 
 **IMPORTANT**
 - Use only existing labels; never create new ones.
