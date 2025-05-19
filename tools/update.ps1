@@ -29,4 +29,4 @@ git -C $submodule fetch origin $track
 git -C $submodule checkout $track
 
 # Run initialization script
-& $(Join-Path $submoduleRoot 'init.ps1')
+& $(Join-Path $submoduleRoot 'tools/init.ps1')
