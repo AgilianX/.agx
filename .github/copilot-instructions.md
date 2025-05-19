@@ -24,3 +24,4 @@ Goal: Collection of development tools, conventions, and automation for AgilianX 
 - Avoid HTML in markdown files.
 - All Documentation files except conventions must include a footer with the following information:
   - Related source files (if applicable), using actual Markdown links to the files (not just plain text paths)
+  - Do not include this information in commit or merge messages.

@@ -5,15 +5,15 @@ param(
 )
 
 $hookDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$aiCommit = Join-Path $hookDir 'ai-commit.txt'
-$template = Join-Path $hookDir 'commit-template.txt'
 $initialContent = Get-Content $CommitMsgFile
 
 # Overwrite with template or ai-commit
-if ($env:AGX_AI_WORKFLOW -eq 'true' -and (Test-Path $aiCommit)) {
+if ($env:AGX_AI_WORKFLOW -eq 'true') {
+    $aiCommit = Join-Path $hookDir '../ai/ai-commit.txt'
     Get-Content $aiCommit | Set-Content $CommitMsgFile
 }
-elseif (Test-Path $template) {
+else {
+    $template = Join-Path $hookDir 'commit-template.txt'
     Get-Content $template | Set-Content $CommitMsgFile
 }
 

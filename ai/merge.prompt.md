@@ -47,13 +47,13 @@ remove obvious or repetitive information, and rephrase to shorten the content wh
 ## Step 5: Finalize
 - Display the final draft message in a code block in chat. (no user confirmation needed)
 - Write the message to the appropriate prepare-comit-msg file.
-    - `.agx/hooks/ai-commit.txt` for the main repository
-    - `hooks/ai-commit.txt` for the .agx submodule
+    - `.agx/ai/ai-commit.txt` for the main repository
+    - `ai/ai-commit.txt` for the .agx submodule
 - Check out the target branch.
 - Run `git agx-ai-merge {source-branch}` to open the merge editor with the message for review AFTER:
     - 1. displaying the draft
     - 2. editing the prepare-commit-msg file.
-- Remove all the content of the `ai-comit.txt` file after the merge is completed to avoid stale messages.
+- Remove all the content of the `ai-commit.txt` file after the merge is completed to avoid stale messages.
 - At the end of the workflow, set the environment variable `$env:AGX_AI_WORKFLOW = 'false'`.
 
 ---

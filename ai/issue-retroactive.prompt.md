@@ -39,12 +39,12 @@ Produce a fully compliant retroactive issue efficiently. Follow these steps exac
 ## Step 5: Finalize
 - Display the final issue in chat.
 - Wait for user confirmation when you believe the draft is final.
-- If approved, first create the issue using `#create_issue` and then immediately follow the [ai.create-commit-message.prompt.md](ai.create-commit-message.prompt.md) instructions without asking for confirmation or permission.
+ - If approved, first create the issue using `#create_issue` and then immediately follow the [commit.prompt.md](commit.prompt.md) instructions without asking for confirmation or permission.
 - If the issue is meant to be a sub-issue, make sure it is created as a sub-issue of the parent issue.
 
 ## When the prompt is invoked again
 - If the prompt is invoked again after the issue is created or a relevant issue is identified,
-skip to the [ai.create-commit-message.prompt.md](ai.create-commit-message.prompt.md) instructions without asking for confirmation or permission.
+ skip to the [commit.prompt.md](commit.prompt.md) instructions without asking for confirmation or permission.
 - If the prompt is invoked again while the process is still in progress, continue the process without asking for confirmation or permission and ignore the new prompt.
 
 Worked best on: Claude3.7 Sonnet

@@ -160,7 +160,7 @@ Several AI-assisted workflows depend on these aliases to operate effectively:
 
 1. **AI commit message generation**: The `agx-ai-lg` command provides sufficient context for our AI agents to understand commit history patterns.
 
-2. **AI prompt execution**: Some prompt files like [ai.create-commit-message.prompt.md](../../../ai/ai.create-commit-message.prompt.md) explicitly reference these aliases in their execution steps.
+2. **AI prompt execution**: Some prompt files like [commit.prompt.md](../../../ai/commit.prompt.md) explicitly reference these aliases in their execution steps.
 
 3. **Consistent context gathering**: When agents need to understand repository state, these aliases ensure they receive consistent and sufficient information, free of halucinated extra arguments that come from training data around the command.
 
@@ -195,4 +195,8 @@ Several AI-assisted workflows depend on these aliases to operate effectively:
 - [tools/install-aliases.ps1](../../../tools/install-aliases.ps1)
 - [tools/init.ps1](../../../tools/init.ps1)
 - [tools/auto-update.ps1](../../../tools/auto-update.ps1)
-- [ai/ai.create-commit-message.prompt.md](../../../ai/ai.create-commit-message.prompt.md)
+- [ai/commit.prompt.md](../../../ai/commit.prompt.md)
+- [ai/issue-retroactive.prompt.md](../../../ai/issue-retroactive.prompt.md)
+- [ai/issue.prompt.md](../../../ai/issue.prompt.md)
+- [ai/merge.prompt.md](../../../ai/merge.prompt.md)
+- [ai/summarize-research.prompt.md](../../../ai/summarize-research.prompt.md)
