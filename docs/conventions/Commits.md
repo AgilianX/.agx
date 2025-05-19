@@ -15,9 +15,10 @@ A commit message consists of:
 <type>(<scope>): <summary  short description>
 
 <body>
-- <bullet describing what changed>
-- <bullet describing why or how, if relevant>
-- <bullet describing any other relevant information>
+- <bullet describing what, why or how it changed, if relevant>
+- <bullet>
+...
+- <bullet>
 </body>
 
 <metadata +key:value>
