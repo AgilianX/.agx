@@ -8,6 +8,7 @@ agx-ai-diff-staged: "!git --no-pager diff --staged"
 agx-ai-git-context: "!pwsh -NoProfile -ExecutionPolicy Bypass -File .agx/tools/repo_info.ps1"
 agx-ai-log: "!git --no-pager log"
 agx-ai-merge: "!git merge --no-ff"
+agx-ai-release: "!git merge --squash"
 
 # Demo aliases
 # These aliases only work in the .agx repository

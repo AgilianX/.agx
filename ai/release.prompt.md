@@ -1,59 +1,68 @@
 # Goal
-Generate a standards-compliant merge commit message and execute the merge without user interaction beyond information and showing the final draft.
+Generate a standards-compliant release commit and tag, finalizing a new release on the `master` branch.
 
 **IMPORTANT**
 - Follow the [Commits.md](../docs/conventions/Commits.md) specification precisely.
-- Select one appropriate `type` per commit based on the most significant change.
-- For AI-related files (prompts, workflows, configs), prioritize the `ai` type.
-- Use context from relevant issues in the merge message when applicable.
+- Use the `release` type for the commit.
+- The commit message must be: `release({MajorMinorPatch}): finalize release`
+- The tag must be: `v({MajorMinorPatch}): Summary` with bullets summarizing the release.
 - Never include implementation details in messages.
-- Never use `git merge`, always use `git agx-ai-merge` WITHOUT ARGUMENTS to open the editor with the message for review.
+- Never use `git merge`, always use `git agx-ai-release {source-branch}` WITHOUT ADDITIONAL ARGUMENTS to open the editor with the message for review.
 
 ---
 
 ## Step 1: Analysis
 - At the start of the workflow, set the environment variable `$env:AGX_AI_WORKFLOW = 'true'`.
+- Run `git agx-ai-git-context` to gather information about the current git context.
 - Before anything, run `git agx-ai-git-context` to gather information about the current git context.
   - Run this command whenever you expect the git context to change (e.g., after checking out another branch or entering a submodule).
   - You can and should run this command whenever you are unsure about the location of the terminal or if commands fail.
 - Determine the source branch (defaults to the active branch unless overridden by the user in the prompt).
-- Determine the target branch (defaults to `develop` unless overridden by the user in the prompt).
+- Determine the target branch (defaults to `master` unless overridden by the user in the prompt).
   - Display information about the source and target branches in the chat.
 - If the source branch is different from the active branch, check out the source branch.
 - Run `git agx-ai-status` to check for uncommitted changes. If any are found, abort and notify the user.
-- Run `git agx-ai-log {target branch}..{source branch}` to gather the list of commits to be merged.
+- Run `dotnet-gitversion` and extract `{MajorMinorPatch}` from the output.
+- Run `git agx-ai-log <last-semver-tag>..{source branch}` to gather the list of commits since the last semantic versioned tag on `master`.
 
 ## Step 2: Issue Correlation
 - List open issues using the `#list_issues` tool.
 - Determine if changes directly address any open issues.
 - Use `#get_issue <number>` for detailed context if needed.
 - Include `+issue:#XXX` only when changes directly resolve or address an issue and is undeniably related.
-- If any issues are related and included in the merge:
-  - Display a short summary about the issues in the chat before continuing to drafting the merge message.
-  - Continue drafting the merge message only AFTER displaying the issue information in the chat (if any).
+- If any issues are related and included in the release:
+  - Display a short summary about the issues in the chat before continuing to drafting the release notes.
+  - Continue drafting the release notes only AFTER displaying the issue information in the chat (if any).
 
 ## Step 3: Message Formation
-- Draft the merge message according to the commit specification, summarizing the changes made on the source branch.
-- Structure the message according to the specification.
+- Draft the merge commit message as:
+  `release({MajorMinorPatch}): finalize release`
+- Draft the tag message as:
+  ```
+  v({MajorMinorPatch}): Summary
+  - Bulleted list summarizing the changes since the last tag, following commit message conventions.
+  ```
+- Structure the tag message according to the specification.
 - Include additional metadata only if instructed.
 
 ## Step 4: Validation
-- Verify type and scope appropriateness per specification.
-- Iterate at least 3 times and with each iteration, attempt to improve type, scope, and compliance,
+-  For the tag message, Iterate at least 3 times and with each iteration, attempt to improve type, scope, and compliance,
 remove obvious or repetitive information, and rephrase to shorten the content where being explicit is not critical.
 - Ensure the message is concise, clear, and focuses on WHAT changed (not HOW).
 - Check that bullet points add meaningful context.
 
 ## Step 5: Finalize
-- Display the final draft message in a code block in chat. (no user confirmation needed)
+- Display the final draft commit and tag messages in code blocks in chat. (no user confirmation needed)
 - Write the message to the appropriate prepare-comit-msg file.
     - `.agx/ai/ai-commit.txt` for the main repository.
     - `ai/ai-commit.txt` for the .agx submodule.
 - Check out the target branch.
-- Run `git agx-ai-merge {source-branch}` to open the merge editor with the message for review AFTER:
-    - 1. displaying the draft.
+- Run `git agx-ai-release {source-branch}` and then `git agx-ai-commit` to open the merge editor with the message for review AFTER:
+    - 1. displaying the merge message draft.
     - 2. editing the `ai-commit.txt` file.
-- Remove all the content of the `ai-commit.txt` file after the merge is completed to avoid stale messages.
+    - 3. displaying the tag message draft.
+- After the merge, run `git tag` to create the tag with the prepared tag message.
+- Remove all the content of the `ai-commit.txt` file after the release is completed to avoid stale messages.
 - At the end of the workflow, set the environment variable `$env:AGX_AI_WORKFLOW = 'false'`.
 
 ---
@@ -63,6 +72,6 @@ remove obvious or repetitive information, and rephrase to shorten the content wh
 
 **Reminders:**
 - Avoid assumptions. Include additional metadata only if instructed.
-- Only use the commits to be merged to determine what the merge addresses.
-- Never leak implementation details in merge messages.
+- Only use the commits since the last tag to determine what the release addresses.
+- Never leak implementation details in release notes.
 - Prioritize clarity and full compliance with the [Commits.md](../../.agx/docs/conventions/Commits.md) specification.
