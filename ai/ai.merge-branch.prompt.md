@@ -8,7 +8,6 @@ Generate a standards-compliant merge commit message and execute the merge withou
 - Use context from relevant issues in the merge message when applicable.
 - Never include implementation details in messages.
 - Never use `git merge`, always use `git agx-ai-merge` WITHOUT ARGUMENTS to open the editor with the message for review.
-- Do not use `echo` and `Set-Content` to write the message to the `ai-commit` file.
 
 ---
 
