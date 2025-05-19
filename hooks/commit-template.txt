@@ -1,0 +1,18 @@
+
+
+
+
+##### Commit Structure: #################################################
+#                                                                       #
+#     <type>(<scope>): <summary short description>                      #
+#                                                                       #
+#     <body>                                                            #
+#     - <bullet describing what, why or how it changed, if relevant>    #
+#     - <bullet>                                                        #
+#     ...                                                               #
+#     - <bullet>                                                        #
+#     </body>                                                           #
+#                                                                       #
+#     <metadata +key:value>                                             #
+#                                                                       #
+##### See .agx/docs/conventions/Commits.md for full details! ############

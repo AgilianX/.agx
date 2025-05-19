@@ -1,0 +1,9 @@
+#!/bin/sh
+# prepare-commit-msg hook for AgilianX (shell wrapper)
+# Invokes the PowerShell version of the hook
+
+HOOK_DIR="$(dirname "$0")"
+POWERSHELL_SCRIPT="$HOOK_DIR/prepare-commit-msg.ps1"
+
+# Pass all arguments to the PowerShell script
+pwsh -NoProfile -ExecutionPolicy Bypass -File "$POWERSHELL_SCRIPT" "$@"

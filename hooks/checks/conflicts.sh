@@ -1,5 +1,4 @@
 #!/bin/sh
-# Check for merge conflict markers in staged files
 for file in "$@"; do
     # Skip this script itself
     if [ "$file" = "$0" ]; then

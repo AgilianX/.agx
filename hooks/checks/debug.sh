@@ -1,8 +1,8 @@
+#!/bin/sh
 if [ "$AGX_PRECOMMIT_SKIPDEBUGCHECK" = "1" ]; then
-    echo "⚠️  Skipping debug statement check due to AGX_PRECOMMIT_SKIPDEBUGCHECK=1"
+    echo "[debug.sh] ⚠️  Skipping debug statement check due to AGX_PRECOMMIT_SKIPDEBUGCHECK=1"
     exit 0
 fi
-#!/bin/sh
 # Check for debug statements in staged files
 for file in "$@"; do
 
