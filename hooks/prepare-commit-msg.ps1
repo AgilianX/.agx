@@ -1,7 +1,3 @@
-#!/usr/bin/env pwsh
-# prepare-commit-msg hook for AgilianX (PowerShell version)
-# Uses ai-commit.txt if $env:AGX_AI_WORKFLOW is true, otherwise uses commit-template.txt
-
 param(
     [string]$CommitMsgFile,
     [string]$CommitSource,
@@ -11,9 +7,6 @@ param(
 $hookDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $aiCommit = Join-Path $hookDir 'ai-commit.txt'
 $template = Join-Path $hookDir 'commit-template.txt'
-
-# Save the initial content (e.g. changed files, comments) if present
-$initialContent = @()
 $initialContent = Get-Content $CommitMsgFile
 
 # Overwrite with template or ai-commit

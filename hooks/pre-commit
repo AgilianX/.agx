@@ -1,30 +1,3 @@
 #!/bin/sh
-# This hook runs before any Git commit
-
-# Get staged files (not deleted), filter out directories and submodules (gitlinks)
-RAW_FILES=$(git diff --cached --name-only --diff-filter=ACM)
-FILES=""
-for file in $RAW_FILES; do
-    # Skip directories
-    if [ -d "$file" ]; then
-        continue
-    fi
-    # Skip submodule entries (gitlinks)
-    if git ls-files --stage -- "$file" | grep -qE '^160000'; then
-        continue
-    fi
-    FILES="$FILES $file"
-done
-
-# Run each check script on filtered staged files
-HOOK_DIR="$(dirname "$0")/checks"
-for script in "$HOOK_DIR"/*.sh; do
-    # Only run if there are files to check
-    if [ -n "$FILES" ]; then
-        "$script" $FILES || exit 1
-    fi
-done
-
-# All checks passed
-echo "[pre-commit] ✅ All checks passed. Proceeding with commit."
-exit 0
+HOOK_DIR="$(dirname "$0")"
+pwsh -NoProfile -ExecutionPolicy Bypass -File "$HOOK_DIR/pre-commit.ps1" "$@"

@@ -1,3 +1,3 @@
-#!/bin/bash
-# Use PowerShell auto-update script for submodule sync
-pwsh -NoProfile -ExecutionPolicy Bypass -File "$(dirname "$0")/../tools/auto-update.ps1"
+#!/bin/sh
+HOOK_DIR="$(dirname "$0")"
+pwsh -NoProfile -ExecutionPolicy Bypass -File "$HOOK_DIR/post-checkout.ps1" "$@"

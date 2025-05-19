@@ -8,6 +8,7 @@ Generate a standards-compliant commit message and execute the commit without use
 - Use context from relevant issues in the commit message when applicable.
 - Never include implementation details in messages.
 - Never use `git commit`, always use `git agx-ai-commit` WITHOUT ARGUMENTS to open the editor with the message for review.
+- Do not use `echo` and `Set-Content` to write the message to the `ai-commit` file.
 
 ---
 
