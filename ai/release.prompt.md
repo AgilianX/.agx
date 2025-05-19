@@ -5,7 +5,8 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
 - Follow the [Commits.md](../docs/conventions/Commits.md) specification precisely.
 - Use the `release` type for the commit.
 - The commit message must be: `release({MajorMinorPatch}): finalize release`
-- The tag must be: `v({MajorMinorPatch}): Summary` with bullets summarizing the release.
+- The tag must be: `v({MajorMinorPatch}): {Release name / Feature Summary}` with bullets summarizing the release.
+    - The user may supply a release name in the prompt, otherwise you should try to generate it, display it in chat, and ask for confirmation.
 - Never include implementation details in messages.
 - Never use `git merge`, always use `git agx-ai-release {source-branch}` WITHOUT ADDITIONAL ARGUMENTS to open the editor with the message for review.
 
@@ -39,9 +40,11 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
   `release({MajorMinorPatch}): finalize release`
 - Draft the tag message as:
   ```
-  v({MajorMinorPatch}): Summary
+  v({MajorMinorPatch}): {Release name / Feature Summary}
   - Bulleted list summarizing the changes since the last tag, following commit message conventions.
   ```
+- If a release name is not provided, generate a summary based on the commits and display it in chat for confirmation.
+  - Be creative, something catchy but not misleading! You can reference previous tags for inspiration to keep a consistent style.
 - Structure the tag message according to the specification.
 - Include additional metadata only if instructed.
 
@@ -53,9 +56,12 @@ remove obvious or repetitive information, and rephrase to shorten the content wh
 
 ## Step 5: Finalize
 - Display the final draft commit and tag messages in code blocks in chat. (no user confirmation needed)
-- Write the message to the appropriate prepare-comit-msg file.
+- Write the commit message to the appropriate prepare-comit-msg file.
     - `.agx/ai/ai-commit.txt` for the main repository.
     - `ai/ai-commit.txt` for the .agx submodule.
+- Write the tag message to the appropriate prepare-tag-msg file.
+    - `.agx/ai/ai-tag.txt` for the main repository.
+    - `ai/ai-tag.txt` for the .agx submodule.
 - Check out the target branch.
 - Run `git agx-ai-release {source-branch}` and then `git agx-ai-commit` to open the merge editor with the message for review AFTER:
     - 1. displaying the merge message draft.
