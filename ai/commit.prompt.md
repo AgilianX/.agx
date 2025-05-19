@@ -57,7 +57,7 @@ remove obvious or repetitive information and rephrase to shorten the content whe
 **Git Submodules**
 - When gathering context for sumbodule updates:
   1. Change into submodule directory: `cd <submodule-path>`
-  2. Inspect the git log between the commit hashes to gather context.
+  2. Inspect the git log between the two commit hashes in the diff to gather context.
   3. Return to main repo: `cd ..`, do not forget to return to the main repo!
   4. Check if you are in the correct location with `git agx-ai-git-context` before and after gathering information about the submodule.
 
