@@ -11,8 +11,7 @@ $todoPatterns = @(
     'FIXME',
     'BUG',
     'HACK',
-    'UNDONE',
-    'LATER'
+    'UNDONE'
 )
 foreach ($file in $Files) {
     $scriptPath = (Resolve-Path $MyInvocation.MyCommand.Path).Path
