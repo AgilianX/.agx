@@ -223,7 +223,7 @@ chore(assets): move icons to Icons folder
 - Cleaned up folder structure for clarity
 - Updated all import paths to match
 
-+issue:122
++issue: #122
 ```
 
 ### 🟣 Commit With multiple Metadata
@@ -234,8 +234,8 @@ chore(assets): move icons to Icons folder
 - Cleaned up folder structure for clarity
 - Updated all import paths to match
 
-+issue:122
-+nuke:test
++issue: #122
++nuke: test
 ```
 
 ### 🔴 Commit With multiple Metadata, including BREAKING CHANGE
@@ -247,10 +247,10 @@ feat(auth)!: implement OAuth2 provider support
 - Refactored login and token validation logic
 
 +BREAKING: Existing SSO flows must be updated
-+semver:minor
-+issue:#340,#420
-+nuke:feature
-+review:@Xeythhhh
++semver: minor
++issue: #340, #420
++nuke: feature
++review: @Xeythhhh
 ```
 
 ---
