@@ -14,12 +14,10 @@ A commit message consists of:
 ```xml
 <type>(<scope>): <summary  short description>
 
-<body>
 - <bullet describing what, why or how it changed, if relevant>
 - <bullet>
 ...
 - <bullet>
-</body>
 
 <metadata +key:value>
 ```
@@ -175,6 +173,23 @@ feat(auth)!: implement OAuth2 provider support
 - Added external identity provider integration
 
 +BREAKING: Existing SSO flows must be updated
+```
+
+### Reference git refs with `+ref`
+
+Use `+ref` to reference a specific git ref, such as a branch, tag or commit. This is useful for linking to specific points in the commit history.
+
+> [!NOTE]
+> This is typically used when reverting a change
+
+**Example**:
+
+```commit
+revert(auth): revert custom OAuth2 provider support
+
+- Reverted custom OAuth2 provider support in favor of nuget package
+
++ref: 676104e, a215868
 ```
 
 ---
