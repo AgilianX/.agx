@@ -147,4 +147,4 @@ See [LICENSE](LICENSE) for details.
 - [tools/revert-update.ps1](../tools/revert-update.ps1)
 - [tools/auto-update.ps1](../tools/auto-update.ps1)
 - [tools/aliases.yml](../tools/aliases.yml)
-- [tools/repo_info.ps1](../tools/repo_info.ps1)
+- [tools/repo-info.ps1](../tools/repo-info.ps1)

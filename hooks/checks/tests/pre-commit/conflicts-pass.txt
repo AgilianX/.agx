@@ -1,0 +1,2 @@
+This file has no merge conflict markers.
+Just some code.

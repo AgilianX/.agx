@@ -1,0 +1,2 @@
+This line has trailing whitespace.
+Another line with a tab at the end.

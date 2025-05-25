@@ -1,0 +1,2 @@
+This file has a debug statement:
+console.log('debug!');

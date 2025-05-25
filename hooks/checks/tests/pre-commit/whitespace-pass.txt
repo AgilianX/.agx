@@ -1,0 +1,2 @@
+This is a line with no trailing whitespace.
+Another clean line.

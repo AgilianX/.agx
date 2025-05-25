@@ -2,10 +2,12 @@
 # todo.ps1 - PowerShell version of todo.sh
 param(
     [Parameter(ValueFromRemainingArguments = $true)]
-    [string[]]$Files
+    [string]$File
 )
-$blocked = $false
-# Common TODO patterns
+
+$thisScript = $MyInvocation.MyCommand.Path
+if ($(Resolve-Path $File).Path -eq $thisScript) { exit 0 }
+
 $todoPatterns = @(
     'TODO',
     'FIXME',
@@ -13,26 +15,22 @@ $todoPatterns = @(
     'HACK',
     'UNDONE'
 )
-foreach ($file in $Files) {
-    $scriptPath = (Resolve-Path $MyInvocation.MyCommand.Path).Path
-    $filePath = (Resolve-Path $file).Path
-    if ($filePath -eq $scriptPath) { continue }
-    $wordPattern = "\b($($todoPatterns -join '|'))"
-    $todoMatches = Select-String -Path $file -Pattern $wordPattern -SimpleMatch:$false -CaseSensitive:$false
-    if ($todoMatches) {
-        Write-Host "❌ Found TODO-like marker in: $file" -ForegroundColor Red
-        $todoMatches | ForEach-Object {
-            $lineNum = $_.LineNumber
-            $lineText = $_.Line.Trim()
-            Write-Host ('    @{0}.  {1}' -f $lineNum, $lineText) -ForegroundColor DarkGray
-        }
-        $blocked = $true
+
+$wordPattern = "\b($($todoPatterns -join '|'))"
+
+$todoMatches = Select-String -Path $File -Pattern $wordPattern -SimpleMatch:$false -CaseSensitive:$false
+
+if ($todoMatches) {
+    Write-Host "❌ Found TODO-like marker in: $File" -ForegroundColor Red
+    $todoMatches | ForEach-Object {
+        $lineNum = $_.LineNumber
+        $lineText = $_.Line.Trim()
+        Write-Host ('    @{0}.  {1}' -f $lineNum, $lineText) -ForegroundColor DarkGray
     }
-}
-if ($blocked) {
     Write-Host "
 💡 Use `TODO:` for short-lived local todos.
    Create issues and link them in the code via // Issue: #IssueNumber for longer-lived / remote tasks."
     exit 1
 }
+
 exit 0

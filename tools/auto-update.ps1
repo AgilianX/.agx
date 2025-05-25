@@ -30,8 +30,10 @@ git agx-update
 if ($stashed) {
     # Find the stash with the exact unique message
     $stashList = git -C $submodule stash list
-    $autoStash = $stashList -split "`n" | Where-Object { $_ -eq "stash@{0}: $stashMsg" -f ($_ -replace '^stash@\{\d+\}: ', '') } | Select-Object -First 1
-    if ($autoStash -and ($autoStash -match 'stash@\\{(\d+)\\}')) {
+    $autoStash = $stashList -split "`n" | Where-Object { $_.Contains($stashMsg) } | Select-Object -First 1
+    Write-Host "└─▶🔎 Matching stash entry: $autoStash" -ForegroundColor Cyan
+    # We'll go from here as needed
+    if ($autoStash -and ($autoStash -match 'stash@\{(\d+)\}')) {
         $stashRef = "stash@{$($matches[1])}"
         # Pop only the identified stash (does not affect other user stashes)
         git -C $submodule stash pop $stashRef

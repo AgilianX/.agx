@@ -1,0 +1,6 @@
+This file has a merge conflict marker:
+<<<<<<< HEAD
+Some code
+=======
+Other code
+>>>>>>> branch

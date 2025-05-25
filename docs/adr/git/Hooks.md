@@ -20,11 +20,10 @@ The `.agx` submodule installs the following hooks and check scripts:
 
 | Script           | Description                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| whitespace.sh    | Blocks commits with trailing whitespace in staged files.                                 |
-| todo.sh          | Blocks commits containing `TODO` comments in staged files.                              |
-| debug.sh         | Blocks commits containing debug statements.                                              |
-| conflicts.sh     | Blocks commits with unresolved merge conflict markers.                                   |
-| repo_info.sh     | Displays repository and branch info before commit (informational only).                  |
+| whitespace.ps1   | Blocks commits with trailing whitespace in staged files.                                 |
+| todo.ps1         | Blocks commits containing `TODO` comments in staged files.                               |
+| debug.ps1        | Blocks commits containing debug statements.                                              |
+| conflicts.ps1    | Blocks commits with unresolved merge conflict markers.                                   |
 
 ## Skipping Individual Checks
 
@@ -53,11 +52,10 @@ This will skip only the debug statement check, while all other pre-commit checks
 - [pre-commit](../../../hooks/pre-commit)
 - [post-checkout](../../../hooks/post-checkout)
 - [post-merge](../../../hooks/post-merge)
-- [checks/whitespace.sh](../../../hooks/checks/whitespace.sh)
-- [checks/todo.sh](../../../hooks/checks/todo.sh)
-- [checks/repo_info.sh](../../../hooks/checks/repo_info.sh)
-- [checks/debug.sh](../../../hooks/checks/debug.sh)
-- [checks/conflicts.sh](../../../hooks/checks/conflicts.sh)
+- [checks/whitespace.ps1](../../../hooks/checks/whitespace.ps1)
+- [checks/todo.ps1](../../../hooks/checks/todo.ps1)
+- [checks/debug.ps1](../../../hooks/checks/debug.ps1)
+- [checks/conflicts.ps1](../../../hooks/checks/conflicts.ps1)
 - [tools/auto-update.ps1](../../../tools/auto-update.ps1)
 - [tools/install-hooks.ps1](../../../tools/install-hooks.ps1)
 - [tools/init.ps1](../../../tools/init.ps1)
