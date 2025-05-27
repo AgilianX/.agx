@@ -35,10 +35,8 @@ function Write-Submodules() {
     }
 }
 
-Write-Host "📌 Terminal location: $(Get-Location)" -ForegroundColor DarkGray
-Write-Host "📂 Repository: $repoName" -ForegroundColor Cyan
+Write-Host "📂 Repository name: $repoName" -ForegroundColor Cyan
 Write-Submodules $repoRoot
-Write-Host "📁 Repository path: $repoRoot" -ForegroundColor DarkGray
 Write-Host "🔀 Active branch: $branch" -ForegroundColor DarkGray
 
 # This check always passes as it's informational only

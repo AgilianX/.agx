@@ -12,12 +12,16 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
 
 ---
 
-## Step 1: Analysis
+## Step 1: Preparation
+
+- 1. Run `git agx-ai-git-context` to determine the current repository and branch.
+- 2. Ask the user to confirm that the repository is correct, display the repository name.
+  The user may confirm, provide a different repository name or provide a `copilot-instructions.md` file with a different repository name.
+- 3. Verify the repository name described in `.github/copilot-instructions.md` matches the output of `git agx-ai-git-context` exactly.
+- 4. If the names do not match, run `Get-Location` and navigate to the correct directory.
+
+## Step 2: Analysis
 - At the start of the workflow, set the environment variable `$env:AGX_AI_WORKFLOW = 'true'`.
-- Run `git agx-ai-git-context` to gather information about the current git context.
-- Before anything, run `git agx-ai-git-context` to gather information about the current git context.
-  - Run this command whenever you expect the git context to change (e.g., after checking out another branch or entering a submodule).
-  - You can and should run this command whenever you are unsure about the location of the terminal or if commands fail.
 - Determine the source branch (defaults to the active branch unless overridden by the user in the prompt).
 - Determine the target branch (defaults to `master` unless overridden by the user in the prompt).
   - Display information about the source and target branches in the chat.
@@ -26,7 +30,7 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
 - Run `dotnet-gitversion` and extract `{MajorMinorPatch}` from the output.
 - Run `git agx-ai-log <last-semver-tag>..{source branch}` to gather the list of commits since the last semantic versioned tag on `master`.
 
-## Step 2: Issue Correlation
+## Step 3: Issue Correlation
 - List open issues using the `#list_issues` tool.
 - Determine if changes directly address any open issues.
 - Use `#get_issue <number>` for detailed context if needed.
@@ -35,7 +39,7 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
   - Display a short summary about the issues in the chat before continuing to drafting the release notes.
   - Continue drafting the release notes only AFTER displaying the issue information in the chat (if any).
 
-## Step 3: Message Formation
+## Step 4: Message Formation
 - Draft the merge commit message as:
   `release({MajorMinorPatch}): finalize release`
 - Draft the tag message as:
@@ -48,20 +52,20 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
 - Structure the tag message according to the specification.
 - Include additional metadata only if instructed.
 
-## Step 4: Validation
+## Step 5: Validation
 -  For the tag message, Iterate at least 3 times and with each iteration, attempt to improve type, scope, and compliance,
 remove obvious or repetitive information, and rephrase to shorten the content where being explicit is not critical.
 - Ensure the message is concise, clear, and focuses on WHAT changed (not HOW).
 - Check that bullet points add meaningful context.
 
-## Step 5: Finalize
+## Step 6: Finalize
 - Display the final draft commit and tag messages in code blocks in chat. (no user confirmation needed)
 - Write the commit message to the appropriate prepare-comit-msg file.
-    - `.agx/ai/ai-commit.txt` for the main repository.
-    - `ai/ai-commit.txt` for the .agx submodule.
+    - `{repositoryRoot}/.agx/ai/ai-commit.txt` when commiting to the repository.
+    - `{repositoryRoot}/ai/ai-commit.txt` when committing to the `.agx` repository.
 - Write the tag message to the appropriate prepare-tag-msg file.
-    - `.agx/ai/ai-tag.txt` for the main repository.
-    - `ai/ai-tag.txt` for the .agx submodule.
+    - `{repositoryRoot}/.agx/ai/ai-tag.txt` when tagging in the repository.
+    - `{repositoryRoot}/ai/ai-tag.txt` when tagging in the `.agx` repository.
 - Check out the target branch.
 - Run `git agx-ai-release {source-branch}` and then `git agx-ai-commit` to open the merge editor with the message for review AFTER:
     - 1. displaying the merge message draft.
