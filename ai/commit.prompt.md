@@ -24,7 +24,7 @@ Generate a standards-compliant commit message and execute the commit without use
 ## Step 2: Issue Correlation
 - Determine if changes directly address any open issues.
 - Use `#get_issue <number>` for detailed context if needed.
-- Include `+issue:#XXX` only when changes directly resolve or address an issue and is undeniably related.
+- Include `+issue: #XXX` only when changes directly resolve or address an issue and is undeniably related.
 - If any issues are related and included in the commit:
   - Display a short summary about the issues in the chat before continuing to drafting the commit message.
   - Continue drafting the commit message only AFTER displaying the issue information in the chat (if any).

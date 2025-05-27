@@ -12,6 +12,7 @@ Goal: Collection of development tools, conventions, and automation for AgilianX 
   this is likely done intentionally to short circuit the process.
 - Never `push` or `pull` without user confirmation.
   Always ask the user for confirmation before executing these commands.
+- Always split terminal commands with `;` instead of `&&`.
 
 ## Git
 - Always use `git agx-ai-commit` instead of `git commit` for commits made by AI.
