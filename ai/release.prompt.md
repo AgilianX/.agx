@@ -5,7 +5,7 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
 - Follow the [Commits.md](../docs/conventions/Commits.md) specification precisely.
 - Use the `release` type for the commit.
 - The commit message must be: `release({MajorMinorPatch}): finalize release`
-- The tag must be: `v({MajorMinorPatch}): {Release name / Feature Summary}` with bullets summarizing the release.
+- The tag must be: `{Release name / Feature Summary}` with bullets summarizing the release.
     - The user may supply a release name in the prompt, otherwise you should try to generate it, display it in chat, and ask for confirmation.
 - Never include implementation details in messages.
 - Never use `git merge`, always use `git agx-ai-release {source-branch}` WITHOUT ADDITIONAL ARGUMENTS to open the editor with the message for review.
@@ -67,7 +67,7 @@ remove obvious or repetitive information, and rephrase to shorten the content wh
     - 1. displaying the merge message draft.
     - 2. editing the `ai-commit.txt` file.
     - 3. displaying the tag message draft.
-- After the merge, run `git tag` to create the tag with the prepared tag message.
+- After the merge, run `git tag -a v{MajorMinorPatch} -F .agx/ai/ai-tag.txt` to create the tag with the prepared tag message.
 - Remove all the content of the `ai-commit.txt` file after the release is completed to avoid stale messages.
 - At the end of the workflow, set the environment variable `$env:AGX_AI_WORKFLOW = 'false'`.
 
