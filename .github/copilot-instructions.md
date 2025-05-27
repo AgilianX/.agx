@@ -16,7 +16,7 @@ Goal: Collection of development tools, conventions, and automation for AgilianX 
 ## Git
 - Always use `git agx-ai-commit` instead of `git commit` for commits made by AI.
   A draft of the commit message must be generated before running the command.
-- When running ai workflows with git submodules, check the location of the terminal if a command fails and try again.
+- When unsure of the context, active repository or location of the terminal, check the output of `git agx-ai-git-context`.
 - When running a workflow for a submodule, change into the submodule directory and run the workflow there.
 
 ## Documentation

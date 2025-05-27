@@ -35,7 +35,7 @@ function Write-Submodules() {
     }
 }
 
-# Display repository information
+Write-Host "📌 Terminal location: $(Get-Location)" -ForegroundColor DarkGray
 Write-Host "📂 Repository: $repoName" -ForegroundColor Cyan
 Write-Submodules $repoRoot
 Write-Host "📁 Repository path: $repoRoot" -ForegroundColor DarkGray

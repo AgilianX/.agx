@@ -5,7 +5,7 @@ param(
     [string[]]$TestFiles = @()
 )
 
-& $(Resolve-Path(Join-Path $PSScriptRoot '..\\tools\\repo-info.ps1'))
+& $(Resolve-Path(Join-Path $PSScriptRoot '..\\tools\\context-info.ps1'))
 
 $rawFiles = git diff --cached --name-only --diff-filter=ACM | Where-Object { $_ }
 $allFiles = $rawFiles + $TestFiles
