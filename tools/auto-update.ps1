@@ -7,7 +7,7 @@ $submodule = '.agx'
 if ($repoName -eq $submodule) { exit 0 }
 
 # Check if automatic synchronization is explicitly disabled
-$autoSync = git config --local --get "$submodule.autosync"
+$autoSync = git config --local --get agx.autosync
 if ($autoSync -eq 'false') { exit 0 }
 
 # Check if .agx submodule working tree is clean

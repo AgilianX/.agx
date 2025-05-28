@@ -1,14 +1,19 @@
 agx-setup-test: status
+
 agx-update: "!pwsh -NoProfile -ExecutionPolicy Bypass -File .agx/tools/update.ps1 $args"
 agx-revert-update: "!pwsh -NoProfile -ExecutionPolicy Bypass -File .agx/tools/revert-update.ps1"
+
 agx-ai-status: status
-agx-ai-commit: commit
-agx-ai-lg: "!git --no-pager log -n 50"
-agx-ai-diff-staged: "!git --no-pager diff --staged"
-agx-ai-git-context: "!pwsh -NoProfile -ExecutionPolicy Bypass -File .agx/tools/context-info.ps1"
 agx-ai-log: "!git --no-pager log"
+agx-ai-lg: "!git --no-pager log -n 50"
+
+agx-ai-git-context: "!pwsh -NoProfile -ExecutionPolicy Bypass -File .agx/tools/context-info.ps1"
+agx-ai-diff-staged: "!git --no-pager diff --staged"
+agx-ai-diff-submodule: "!pwsh -NoProfile -ExecutionPolicy Bypass -File .agx/tools/diff-submodule.ps1 $args"
+
+agx-ai-commit: commit
 agx-ai-merge: "!git merge --no-ff"
-agx-ai-release: "!git merge --squash"
+agx-ai-release: "!pwsh -NoProfile -ExecutionPolicy Bypass -File .agx/tools/create-release.ps1 $args"
 
 # Demo aliases
 # These aliases only work in the .agx repository

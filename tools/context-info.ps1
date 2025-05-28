@@ -36,6 +36,7 @@ function Write-Submodules() {
 }
 
 Write-Host "📂 Repository name: $repoName" -ForegroundColor Cyan
+Write-Host "📂 Repository root: $repoRoot" -ForegroundColor DarkGray
 Write-Submodules $repoRoot
 Write-Host "🔀 Active branch: $branch" -ForegroundColor DarkGray
 

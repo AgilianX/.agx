@@ -9,7 +9,7 @@ $initialContent = Get-Content $CommitMsgFile
 
 # Overwrite with template or ai-commit
 if ($env:AGX_AI_WORKFLOW -eq 'true') {
-    $aiCommit = Join-Path $hookDir '../ai/ai-commit.txt'
+    $aiCommit = Join-Path $hookDir '../ai-prompts/git/temp/ai-commit.txt'
     $content = Get-Content $aiCommit -Raw
     $trimmed = $content.Trim()
     Set-Content $CommitMsgFile $trimmed

@@ -12,7 +12,7 @@ Set-Location $repoRoot
 # Check if the submodule is already initialized
 $currentCommitHash = (git submodule status $submodule) -replace '^-', '' -split ' ' | Select-Object -First 1
 if ($currentCommitHash) {
-    git config --local "$submodule.previousCommitHash" $currentCommitHash
+    git config --local agx.previousCommitHash $currentCommitHash
 }
 
 # Determine track value: argument takes precedence, fallback to .gitmodules
