@@ -255,12 +255,17 @@ feat(auth)!: implement OAuth2 provider support
 
 ---
 
+> [!NOTE]
+> A GitVersion configuration file that implements this convention can be found at [AgX.RepositoryTemplate/GitVersion.yml](https://github.com/AgilianX/AgX.RepositoryTemplate/blob/master/GitVersion.yml).
+
+---
+
 ### AI Type
 
-AI agent instructions, prompts, workflows, or configuration files (e.g., `ai.*`, `*.prompt.md`, or Copilot-related files) should be committed with the `ai` type.
+AI agent instructions, prompts, workflows or supporting files (e.g., `ai.*`, `*.prompt.md`, or Copilot-related files) should be committed with the `ai` type.
 
 > [!NOTE]
-> This includes any changes to the AI agent's behavior, configuration, or instructions.
+> This includes any changes to the AI agent's behavior, configuration, prompts or instructions.
 
 ### Clarification on Commit Types with Mixed Changes
 
