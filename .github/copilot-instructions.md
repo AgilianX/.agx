@@ -1,25 +1,29 @@
-# IMPORTANT
+# General
 
-**Owner:** AgilianX
-**Repository name:** `.agx`
-**Goal:** Collection of development tools, conventions, and automation for AgilianX repositories to be used as a git submodule
+- Always use `;` to separate terminal commands, not `&&`.
 
 ---
 
-## Git Operations
+## Workflows and prompts
 
+Prompts and workflows descibe their type in their header.
+
+### Git
+
+- When the `git` workflow type is explicitly specified (- Workflow type: `git`)
+  1. Display in the chat an informational message about the current step in the workflow.
+  2. Do not wait for user confirmation unless the step explicitly requires it.
+  3. Follow the instructions in [prepare.prompt.md](../ai-prompts/git/tasks/prepare.prompt.md)
+     before starting the tasks.
+- When working with commit messages(e.g. commit, merge, release, etc.)
+  after analysis is complete, follow the instructions in [issue-corelation.prompt.md](../ai-prompts/git/tasks/issue-corelation.prompt.md).
 - For any git command with the `agx-*` or `agx-ai-*` prefix, run it exactly as written.
   These are preconfigured aliases. Do not modify or add arguments!
   If additional arguments are needed, ask the user for confirmation before proceeding.
 - If GPG signing fails, do not attempt to fix it automatically. Inform the user, as this may be intentional.
 - Never perform `push` or `pull` operations without explicit user confirmation.
-- Always use `;` to separate terminal commands, not `&&`.
-
-### Commits
-
 - Use `git agx-ai-commit` (not `git commit`) for AI-generated commits.
   Always generate a draft commit message before running the command.
-- For submodules, change into the submodule directory before running workflows.
 
 ---
 
