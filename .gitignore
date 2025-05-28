@@ -1,3 +1,2 @@
 # Ignore AI commit hook file
-ai/ai-commit.txt
-ai/ai-tag.txt
+ai-prompts/git/temp/*
