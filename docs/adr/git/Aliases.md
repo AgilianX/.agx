@@ -154,6 +154,35 @@ Verify aliases are working:
 git agx-setup-test
 ```
 
+## Argument Forwarding and Multi-line Aliases
+
+> **Note:** For multi-line/script aliases, you cannot reliably pass arguments directly to the alias. If you need to pass arguments, create a script file (e.g., a PowerShell or Bash script) and invoke that script from your alias. This ensures arguments are forwarded and handled correctly.
+
+### Example: Passing Arguments to a PowerShell Script
+
+Suppose you want an alias that takes three arguments and runs a multi-step workflow. Instead of embedding the logic directly in the alias, create a script:
+
+```powershell
+param(
+    [Parameter(Mandatory=$true)][string]$bar,
+)
+Write-Host "Running script with argument: $bar"
+```
+
+Then, define your alias in `aliases.yml` as:
+
+```yaml
+agx-foo: "!pwsh -NoProfile -File .agx/tools/foo.ps1 $args"
+```
+
+Now, you can call:
+
+```sh
+git agx-foo barValue
+```
+
+---
+
 ## Why Aliases Are Necessary for AI Workflows
 
 Several AI-assisted workflows depend on these aliases to operate effectively:
@@ -169,6 +198,18 @@ Several AI-assisted workflows depend on these aliases to operate effectively:
 5. **Error reduction**: Using aliases minimizes the risk of human error when typing complex commands, especially in AI-assisted workflows.
 
 6. **Consistent prompt execution**: The aliases ensure that AI prompts are executed in a consistent manner, reducing variability in results. Ai training data often produces commands with extra arguments that are not needed in our context. Using standardized aliases helps mitigate this issue as the commands are tokenized differently.
+
+### Why not have the ai invoke the scripts directly?
+
+While it might seem simpler to have AI agents invoke scripts directly, this approach has several drawbacks:
+
+- **Complexity**: AI agents would need to understand the script's context and parameters, which can lead to confusion and errors.
+- **Inconsistency**: Different agents might interpret the script differently, leading to inconsistent behavior across runs.
+- **Maintenance**: Scripts can change over time, and ensuring all agents are aware of the latest version and its parameters can be cumbersome.
+- **Pathing issues**: If the script is moved or renamed, all AI agents would need to be updated accordingly, which can lead to broken workflows.
+
+> [!NOTE]
+> The aliases automatically adjust the correct paths and parameters, ensuring that AI agents always have the right context without needing to understand the underlying scripts when installed.
 
 ### Positive
 
@@ -195,8 +236,4 @@ Several AI-assisted workflows depend on these aliases to operate effectively:
 - [tools/install-aliases.ps1](../../../tools/install-aliases.ps1)
 - [tools/init.ps1](../../../tools/init.ps1)
 - [tools/auto-update.ps1](../../../tools/auto-update.ps1)
-- [ai/commit.prompt.md](../../../ai/commit.prompt.md)
-- [ai/issue-retroactive.prompt.md](../../../ai/issue-retroactive.prompt.md)
-- [ai/issue.prompt.md](../../../ai/issue.prompt.md)
-- [ai/merge.prompt.md](../../../ai/merge.prompt.md)
-- [ai/summarize-research.prompt.md](../../../ai/summarize-research.prompt.md)
+- [ai-prompts/git/common/commit.prompt.md](../../../ai-prompts/git/common/commit.prompt.md)
