@@ -26,6 +26,7 @@ else {
 }
 
 git -C $submodule fetch origin $track
+git -C $submodule pull
 git -C $submodule checkout $track
 
 # Run initialization script
