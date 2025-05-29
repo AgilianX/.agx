@@ -33,7 +33,7 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
   `release({MajorMinorPatch}): finalize release`
 2. Draft the tag message as:
    ```
-   v({MajorMinorPatch}): {Release name or Feature Summary}
+   v{MajorMinorPatch}: {Release name or Feature Summary}
    - Bulleted list summarizing the changes since the last tag.
    ```
    If a release name is not provided with the prompt, generate it based on the included commits.
