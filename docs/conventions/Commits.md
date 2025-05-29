@@ -35,21 +35,22 @@ Notes:
 
 ## Accepted Commit Types
 
-| Type       | Purpose                                                            |
-|------------|--------------------------------------------------------------------|
-| `feat`     | Introduces a new feature                                           |
-| `fix`      | Fixes a bug                                                        |
-| `chore`    | Routine tasks: configs, build scripts, formatting, etc.            |
-| `refactor` | Code change that neither fixes a bug nor adds a feature            |
-| `test`     | Adding or updating tests                                           |
-| `style`    | Code style or formatting changes                                   |
-| `perf`     | Performance improvements                                           |
-| `revert`   | Reverts a previous commit                                          |
-| `repo`     | Changes to the repository itself (e.g. .gitignore,  git hooks)     |
-| `ci`       | CI/CD pipeline and build-related changes                           |
-| `ai`       | AI agent instructions, prompts, workflows, or configuration files  |
-| `docs`     | Documentation of the source code or solutions provided in the repo |
-| `learn`    | Documentation related to research                                  |
+| Type         | Purpose                                                            |
+|--------------|--------------------------------------------------------------------|
+| `feat`       | Introduces a new feature                                           |
+| `fix`        | Fixes a bug                                                        |
+| `chore`      | Routine tasks: configs, build scripts, formatting, etc.            |
+| `refactor`   | Code change that neither fixes a bug nor adds a feature            |
+| `test`       | Adding or updating tests                                           |
+| `style`      | Code style or formatting changes                                   |
+| `perf`       | Performance improvements                                           |
+| `revert`     | Reverts a previous commit                                          |
+| `repo`       | Changes to the repository itself (e.g. .gitignore,  git hooks)     |
+| `submodules` | Changes to submodules (e.g. adding, removing, updating)            |
+| `ci`         | CI/CD pipeline and build-related changes                           |
+| `ai`         | AI agent instructions, prompts, workflows, or configuration files  |
+| `docs`       | Documentation of the source code or solutions provided in the repo |
+| `learn`      | Documentation related to research                                  |
 
 > [!TIP]
 > If the commit has [multiple types](#clarification-on-commit-types-with-mixed-changes), use the most relevant one. For example, if adds a feature,
