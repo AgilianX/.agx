@@ -94,17 +94,15 @@ Merge commits must follow the same enhanced standard, with emphasis on clarity, 
 Each entry:
 
 - Begins with `+`
-- Uses a `key:value` format
+- Uses a `key: value` format
 - Is separated by new lines
-
-[gitVersion]: https://gitversion.net
 
 ### Control version bumping with `+semver`
 
-Use `+semver` to explicitly control how [GitVersion][gitVersion] bumps the version for a commit. Place this in the metadata footer. This is useful for ensuring the correct semantic version is applied, regardless of the commit type.
+Use `+semver` to explicitly control how the versioning system bumps the version for a commit.
 
 > [!NOTE]
-> This overrides the default configured behavior of GitVersion.
+> This is used to **override** the configuration and can usually be omitted if your versioning system is properly configured.
 
 | Level                  | Pattern            |
 |------------------------|--------------------|
@@ -113,7 +111,13 @@ Use `+semver` to explicitly control how [GitVersion][gitVersion] bumps the versi
 | Patch                  | `patch`/`fix`      |
 | Skip - no version bump | `skip`/`none`      |
 
-**Example**: `+semver:minor`
+**Example**: `+semver: minor`
+
+[gitVersion]: https://gitversion.net
+[agGitVersion]: https://github.com/AgilianX/AgX.RepositoryTemplate/blob/master/GitVersion.yml
+
+> [!TIP]
+> A [GitVersion][gitVersion] configuration file that implements this convention can be found at [AgX-GitVersion.yml][agGitVersion].
 
 ---
 
@@ -126,9 +130,9 @@ Use `+issue` to reference one or more issues or pull requests related to the com
 
 **Examples**:
 
-- `+issue:#342`
-- `+issue:#123,#234`
-- `+issue:https://github.com/org/repo/issues/1`
+- `+issue: #342`
+- `+issue: #123,#234`
+- `+issue: https://github.com/org/repo/issues/1`
 
 ---
 
@@ -141,8 +145,8 @@ Use `+nuke` to trigger specific [Nuke](https://nuke.build/) build targets in you
 
 **Example**:
 
-- `+nuke:feature`
-- `+nuke:feature,test`
+- `+nuke: feature`
+- `+nuke: feature,test`
 
 ---
 
@@ -153,7 +157,11 @@ Use `+review` to request a review from a specific GitHub user. Mention the revie
 > [!NOTE]
 > Most IDEs and GitHub will autocomplete usernames when you type `@` in the commit message.
 
-**Example**: `+review:@Xeythhhh`
+**Example**:
+
+`+review: @Xeythhhh`
+`+review: @copilot`
+`+review: @Xeythhhh, @copilot`
 
 ---
 
@@ -252,11 +260,6 @@ feat(auth)!: implement OAuth2 provider support
 +nuke: feature
 +review: @Xeythhhh
 ```
-
----
-
-> [!NOTE]
-> A GitVersion configuration file that implements this convention can be found at [AgX.RepositoryTemplate/GitVersion.yml](https://github.com/AgilianX/AgX.RepositoryTemplate/blob/master/GitVersion.yml).
 
 ---
 
