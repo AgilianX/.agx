@@ -15,8 +15,8 @@ Prompts and workflows descibe their type in their header.
   2. Do not wait for user confirmation unless the step explicitly requires it.
   3. Follow the instructions in [prepare.prompt.md](../ai-prompts/git/tasks/prepare.prompt.md)
      before starting the tasks.
-- When working with commit messages(e.g. commit, merge, release, etc.)
-  after analysis is complete, follow the instructions in [issue-corelation.prompt.md](../ai-prompts/git/tasks/issue-corelation.prompt.md).
+- When working with commit messages in `git` ai workflows and prompts (e.g. commit, merge, release, etc.),
+  after step 1 (analysis) is complete, follow the instructions in [issue-corelation.prompt.md](../ai-prompts/git/tasks/issue-corelation.prompt.md).
 - For any git command with the `agx-*` or `agx-ai-*` prefix, run it exactly as written.
   These are preconfigured aliases. Do not modify or add arguments!
   If additional arguments are needed, ask the user for confirmation before proceeding.

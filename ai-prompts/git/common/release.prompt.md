@@ -13,7 +13,6 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
 ---
 
 ## Step 1: Analysis
-- Command: `git agx-ai-lg` can be used on the target branch to get inspiration on the commit message scopes and types to keep things consistent.
 1. Determine the source branch (defaults to the active branch unless overridden by the user in the prompt).
 2. Determine the target branch (defaults to `master` unless overridden by the user in the prompt).
 3. Display information about the source and target branches in the chat and await confirmation.
@@ -27,7 +26,6 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
 8. Command: `git agx-ai-log {last-semver-tag}..{source branch}` will gather the list of commits
    Since the last semantic versioned tag on `master`.
    If no tags exist, included all commits on the source branch.
-
 
 ## Step 2: Message Formation
 - Command: `git show {existingTag}` can be used to reference existing tags for inspiration to keep a consistent style.
@@ -60,14 +58,3 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
     - editing the `ai-tag.txt` file.
 6. After the merge, run `git tag -a v{MajorMinorPatch} -F {path-to-ai-tag.txt}`
 7. Remove all the content of the `ai-commit.txt` and `ai-tag.txt` files after the release is completed to avoid stale messages.
-
----
-
-**Scopes:**
-- You can use `git agx-ai-lg` to get inspiration on the commit message scopes and types to keep things consistent.
-
-**Reminders:**
-- Avoid assumptions. Include additional metadata only if instructed.
-- Only use the commits since the last tag to determine what the release addresses.
-- Never leak implementation details in release notes.
-- Prioritize clarity and full compliance with the [Commits.md](../../../docs/conventions/Commits.md) specification.

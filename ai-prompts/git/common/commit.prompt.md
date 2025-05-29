@@ -22,6 +22,7 @@ Generate a standards-compliant commit message and execute the commit without use
 1. Analyze the staged files and changes to determine the type of changes made.
 
 ## Step 2: Message Formation
+- Command: `git agx-ai-lg` can be used get inspiration on the commit message to keep things consistent.
 1. Draft the merge message according to the commit specification, summarizing the staged changes.
 2. Verify type and scope appropriateness per specification.
 3. Iterate at least 3 times and with each iteration, attempt to improve type, scope and compliance,

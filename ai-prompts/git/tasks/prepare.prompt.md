@@ -8,8 +8,8 @@ IMPORTANT:
 
 ---
 
-1. Run `Get-Location` to determine the current working directory.
-2. Run `git agx-ai-git-context` to determine the current repository and branch.
+1. Command: `Get-Location` will determine the current working directory.
+2. Command: `git agx-ai-git-context` will determine the current repository and branch.
 3. Ask the user to confirm that the repository is correct, display the repository name.
    Inform the user of the options available, the user may:
    - Confirm

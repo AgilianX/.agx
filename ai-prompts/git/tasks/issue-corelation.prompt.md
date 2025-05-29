@@ -2,8 +2,10 @@
 mode: agent
 ---
 
-- Tool: `#list_issues` will list open issues.
-- Tool: `#get_issue <number>` will provide detailed context for a specific issue.
+Determine if any open issue is related.
+
+- Tool: `#mcp_github_list_issues` will list open issues.
+- Tool: `#mcp_github_get_issue <number>` will provide detailed context for a specific issue.
 1. Determine if changes directly address any open issues.
 2. Include issue metadata (as per the specification) only when changes directly resolve or address an issue
    and is undeniably related.

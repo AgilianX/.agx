@@ -15,7 +15,8 @@ Generate a standards-compliant merge commit message and execute the merge withou
 ---
 
 ## Step 1: Analysis
-- Command: `git agx-ai-lg` can be used on the target branch to get inspiration on the commit message scopes and types to keep things consistent.
+- Command: `git agx-ai-lg` can be used on the target branch to get inspiration on the commit message to keep things consistent.
+  When used for inspiration, look specifically for merge commits.
 1. Determine the source branch (defaults to the active branch unless overridden by the user in the prompt).
 2. Determine the target branch (defaults to `develop` unless overridden by the user in the prompt).
 3. Display information about the source and target branches in the chat and await confirmation.

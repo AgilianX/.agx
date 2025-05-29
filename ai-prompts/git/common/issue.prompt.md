@@ -16,8 +16,8 @@ Produce a fully compliant issue efficiently. Follow these steps exactly.
 ---
 
 ## Step 1: Context
-- Tool: `#list_issues` will list open issues.
-- Tool: `#get_issue` will provide detailed context for a specific issue.
+- Tool: `#mcp_github_list_issues` will list open issues.
+- Tool: `#mcp_github_get_issue` will provide detailed context for a specific issue.
 - Command: `git agx-ai-status` will show the staged files.
 - Command: `git agx-ai-diff-staged` will show the staged diff changes.
 1. Analyze the staged files and changes to determine the type of changes made.
@@ -38,5 +38,6 @@ without losing the essence and goal of the issue.
 ## Step 5: Finalize
 1. Display the final issue in chat.
 2. Wait for user confirmation when you believe the draft is final.
-3. If approved, create the issue using `#create_issue`.
+3. Tool: `#mcp_github_create_issue ` will create the issue.
+   Use this if the draft is approved by the user.
    If the issue is meant to be a sub-issue, make sure it is created as a sub-issue of the parent issue.

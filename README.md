@@ -15,6 +15,11 @@ A comprehensive collection of development tools, conventions, and automation for
 
 To integrate the AgilianX shared tooling in any repository:
 
+> [!NOTE]
+> By default, the submodule will track the `commit` at the time of addition.
+> The init script will set up the submodule to track the `master` branch for automatic updates.
+> See [Configuration Options](docs/adr/git/Config.md) for details.
+
 1. Add the repository as a Git submodule:
 
     ```bash
@@ -23,11 +28,6 @@ To integrate the AgilianX shared tooling in any repository:
     ```
 
 2. Run the [initialization script](tools/init.ps1):
-
-    > [!NOTE]
-    > By default, the submodule will track the `commit` at the time of addition.
-    > The init script will set up the submodule to track the `master` branch for automatic updates.
-    > See [Configuration Options](docs/adr/git/Config.md) for details.
 
    ```powershell
    # From the repository root
