@@ -134,6 +134,9 @@ Use `+issue` to reference one or more issues or pull requests related to the com
 - `+issue: #123,#234`
 - `+issue: https://github.com/org/repo/issues/1`
 
+> [!TIP]
+> You can also use `+resolves: #123` to indicate that the commit resolves the issue.
+
 ---
 
 ### Trigger CI/CD Nuke build targets with `+nuke` (planned, not implemented)
