@@ -35,6 +35,7 @@ Generate a standards-compliant release commit and tag, finalizing a new release 
    ```
    v{MajorMinorPatch}: {Release name or Feature Summary}
    - Bulleted list summarizing the changes since the last tag.
+   Full Changelog: {last-semver-tag}..{last-commit-on-source-branch}
    ```
    If a release name is not provided with the prompt, generate it based on the included commits.
    Be creative, something catchy but not misleading! Display it in chat for confirmation.
