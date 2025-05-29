@@ -189,7 +189,7 @@ Several AI-assisted workflows depend on these aliases to operate effectively:
 
 1. **AI commit message generation**: The `agx-ai-lg` command provides sufficient context for our AI agents to understand commit history patterns.
 
-2. **AI prompt execution**: Some prompt files like [commit.prompt.md](../../../ai/commit.prompt.md) explicitly reference these aliases in their execution steps.
+2. **AI prompt execution**: Some prompt files like [commit.prompt.md](../../../ai-prompts/git/common/commit.prompt.md) explicitly reference these aliases in their execution steps.
 
 3. **Consistent context gathering**: When agents need to understand repository state, these aliases ensure they receive consistent and sufficient information, free of halucinated extra arguments that come from training data around the command.
 
