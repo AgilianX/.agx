@@ -1,11 +1,12 @@
 ---
 mode: agent
 ---
+workflow: git
+
 # Goal
 Generate a standards-compliant release commit and tag, finalizing a new release on the `master` branch.
 
 **IMPORTANT**
-- Workflow type: `git`
 - Follow the [Commits.md](../../../docs/conventions/Commits.md) specification precisely.
 - Never use `git merge`, always use `git agx-ai-release {source-branch}` WITHOUT ADDITIONAL ARGUMENTS to open the editor with the message for review.
 - Never leak implementation details in commit messages.

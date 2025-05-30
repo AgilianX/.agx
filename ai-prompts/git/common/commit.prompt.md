@@ -1,16 +1,18 @@
 ---
 mode: agent
 ---
+workflow: git
+
 # Goal
 Generate a standards-compliant commit message and execute the commit without user interaction beyond information and showing the final draft.
 
 **IMPORTANT**
-- Workflow type: `git`
 - Follow the [Commits.md](../../../docs/conventions/Commits.md) specification precisely.
 - Never use `git commit`, always use `git agx-ai-commit` WITHOUT ARGUMENTS to open the editor with the message for review.
 - Never leak implementation details in commit messages.
 - Avoid assumptions. Include additional metadata only if instructed.
 - If the commit was aborted, stop the workflow.
+- Do not wait for user confirmation unless the step explicitly requires it.
 
 ---
 

@@ -1,16 +1,18 @@
 ---
 mode: agent
 ---
+workflow: git
+
 # Goal
 Generate a standards-compliant merge commit message and execute the merge without user interaction beyond information and showing the final draft.
 
 **IMPORTANT**
-- Workflow type: `git`
 - Follow the [Commits.md](../../../docs/conventions/Commits.md) specification precisely.
 - Never use `git merge`, always use `git agx-ai-merge` WITHOUT ARGUMENTS to open the editor with the message for review.
 - Use context from relevant issues in the merge message when applicable.
 - Never leak implementation details in commit messages.
 - Only use the commits to be merged to determine what the merge addresses.
+- Do not wait for user confirmation unless the step explicitly requires it.
 
 ---
 

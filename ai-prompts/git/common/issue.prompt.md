@@ -1,17 +1,18 @@
 ---
 mode: agent
 ---
+workflow: git
+
 # Goal
 Produce a fully compliant issue efficiently. Follow these steps exactly.
 
 **IMPORTANT**
-- Workflow type: `git`
 - Use only existing labels; never create new ones.
 - Use safe defaults or ask the user if a task is ambiguous.
 - Keep issues concise, clear, and human-readable.
 - Structure and scope the issue description to requirements.
 - Strictly follow the [Issues.md](../../../docs/conventions/Issues.md) specification.
-- Wait for user confirmation only when the step or task explicitly requires it.
+- Do not wait for user confirmation unless the step explicitly requires it.
 
 ---
 
