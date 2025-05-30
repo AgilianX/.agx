@@ -3,7 +3,7 @@
 #   auto-stash.ps1                # Stash changes (returns timestamp if stashed, else empty string)
 #   auto-stash.ps1 -Timestamp ts  # Pop stash with matching timestamp
 
-param([Parameter(Mandatory = $false)][string]$Timestamp)
+param([Parameter(Mandatory = $false)][datetime]$Timestamp)
 $ErrorActionPreference = 'Stop'
 $submodule = '.agx'
 

@@ -96,10 +96,16 @@ if (-not $isInAgxRoot) {
     $track = Get-GitSubmoduleConfig-Setting 'track' 'master'
     Write-Host "|     Track: $track" -ForegroundColor DarkGray
 
-    Write-Host '|     Updating AgX ...' -ForegroundColor DarkGray
-    $checkoutOutput = git -C .agx checkout $track 2>&1
-    foreach ($line in $checkoutOutput) {
-        Write-Host "|         $line" -ForegroundColor DarkGray
+    $initialized = Get-GitSubmoduleConfig-Setting 'initialized' 'false'
+    if ($initialized -ne 'true') {
+
+        Write-Host '|     Initializing AgX ...' -ForegroundColor DarkGray
+        $checkoutOutput = git -C .agx checkout $track 2>&1
+        foreach ($line in $checkoutOutput) {
+            Write-Host "|         $line" -ForegroundColor DarkGray
+        }
+
+        git config -f .gitmodules 'submodule..agx.initialized' true
     }
 }
 
