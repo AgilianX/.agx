@@ -28,7 +28,8 @@ git -C $submodule fetch origin $track
 $stashedTimestamp = & (Join-Path $PSScriptRoot 'auto-stash.ps1')
 
 # Find local commits in the submodule that are not on the remote tracking branch
-$localCommits = git -C $submodule log $track..HEAD --format="%H" | Select-Object -Reverse
+$localCommits = @(git -C $submodule log $track..HEAD --format="%H")
+[Array]::Reverse($localCommits)
 
 try {
     # Check if $track is a branch or commit hash
