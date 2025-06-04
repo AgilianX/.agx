@@ -1,7 +1,3 @@
----
-mode: agent
----
-
 Determine if any open issue is related.
 
 - Tool: `#mcp_github_list_issues` will list open issues.

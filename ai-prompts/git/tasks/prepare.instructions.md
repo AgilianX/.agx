@@ -1,6 +1,3 @@
----
-mode: agent
----
 IMPORTANT:
 - At the start of an ai workflow set the environment variable `$env:AGX_AI_WORKFLOW = 'true'`.
 - At the end of an ai workflow set the environment variable `$env:AGX_AI_WORKFLOW = 'false'`.
