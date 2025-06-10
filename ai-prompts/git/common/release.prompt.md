@@ -7,6 +7,7 @@ workflow: git
 Generate a standards-compliant release commit and tag, finalizing a new release on the `master` branch.
 
 **IMPORTANT**
+- Before starting the workflow, follow these additional preparation [instructions](../tasks/prepare.instructions.md)
 - Follow the [Commits.md](../../../docs/conventions/Commits.md) specification precisely.
 - Never use `git merge`, always use `git agx-ai-release {source-branch}` WITHOUT ADDITIONAL ARGUMENTS to open the editor with the message for review.
 - Never leak implementation details in commit messages.

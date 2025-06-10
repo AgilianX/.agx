@@ -1,2 +1,3 @@
 # Ignore AI commit hook file
+ai-prompts/temp/*
 ai-prompts/git/temp/*

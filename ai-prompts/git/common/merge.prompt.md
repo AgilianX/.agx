@@ -7,6 +7,7 @@ workflow: git
 Generate a standards-compliant merge commit message and execute the merge without user interaction beyond information and showing the final draft.
 
 **IMPORTANT**
+- Before starting the workflow, follow these additional preparation [instructions](../tasks/prepare.instructions.md)
 - Follow the [Commits.md](../../../docs/conventions/Commits.md) specification precisely.
 - Never use `git merge`, always use `git agx-ai-merge` WITHOUT ARGUMENTS to open the editor with the message for review.
 - Use context from relevant issues in the merge message when applicable.
@@ -26,6 +27,7 @@ Generate a standards-compliant merge commit message and execute the merge withou
 5. Command: `git agx-ai-status` on the source branch will check for uncommitted changes.
    If any are found, abort and notify the user.
 6. Command: `git agx-ai-log {target branch}..{source branch}` will gather the list of commits to be merged.
+7. Follow the instructions in [issue-corelation.instructions.md](../tasks/issue-corelation.instructions.md).
 
 ## Step 2: Message Formation
 1. Draft the merge message according to the commit specification, summarizing the changes made on the source branch.

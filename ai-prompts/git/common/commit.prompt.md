@@ -7,6 +7,7 @@ workflow: git
 Generate a standards-compliant commit message and execute the commit without user interaction beyond information and showing the final draft.
 
 **IMPORTANT**
+- Before starting the workflow, follow these additional preparation [instructions](../tasks/prepare.instructions.md)
 - Follow the [Commits.md](../../../docs/conventions/Commits.md) specification precisely.
 - Never use `git commit`, always use `git agx-ai-commit` WITHOUT ARGUMENTS to open the editor with the message for review.
 - Never leak implementation details in commit messages.
@@ -22,6 +23,7 @@ Generate a standards-compliant commit message and execute the commit without use
 - Command: `git agx-ai-diff-submodule {submoduleName}` will show the staged submodule updates.
   Run this command for each submodule that is staged.
 1. Analyze the staged files and changes to determine the type of changes made.
+2. Follow the instructions in [issue-corelation.instructions.md](../tasks/issue-corelation.instructions.md).
 
 ## Step 2: Message Formation
 - Command: `git agx-ai-lg` can be used get inspiration on the commit message to keep things consistent.

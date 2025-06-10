@@ -7,11 +7,13 @@ workflow: git
 Produce a fully compliant issue efficiently. Follow these steps exactly.
 
 **IMPORTANT**
+- Before starting the workflow, follow these additional preparation [instructions](../tasks/prepare.instructions.md)
 - Use only existing labels; never create new ones.
 - Use safe defaults or ask the user if a task is ambiguous.
 - Keep issues concise, clear, and human-readable.
 - Structure and scope the issue description to requirements.
 - Strictly follow the [Issues.md](../../../docs/conventions/Issues.md) specification.
+- Fetch and follow this template [New Feature Template](https://raw.githubusercontent.com/AgilianX/.github/refs/heads/master/.github/ISSUE_TEMPLATE/feature.yml).
 - Do not wait for user confirmation unless the step explicitly requires it.
 
 ---

@@ -2,26 +2,36 @@
 
 - Repository Info: [Repository](Repository..agx.md)
 - Always use `;` to separate terminal commands, not `&&`.
-- Always inform the user about which instructions you are currently following.
+- Always inform the user about which instructions you are currently following. Keep a balance between detail and brevity for efficiency.
 - Any **temporary** files created by the AI during a prompt will be stored in `.agx/ai-prompts/temp/`.
 
 ---
 
 BEFORE DOING ANYTHING:
-- Please inform the user about the workflow type(`workflow: {type}` in the prompt file header) before proceeding
-- For `workflow: git`, first follow these additional preparation instructions:
-  [prepare.instructions.md](../.agx/ai-prompts/git/tasks/prepare.instructions.md)
+- Please inform the user about the workflow type(`workflow: {type}` in the prompt if present) before proceeding
 
 ## Git
 
-- When working with commit messages(e.g. commit, merge, release, etc.)
-  after analysis is complete, follow the instructions in [issue-corelation.instructions.md](../.agx/ai-prompts/git/tasks/issue-corelation.instructions.md).
+- If a commit is aborted with empty message, it is likely intentional, wait for further user instructions.
+- If GPG signing fails, do not attempt to fix it automatically. Inform the user, as this may be intentional.
+- When using a git command, check for existing aliases, there may be a preconfigured alias starting with `agx-*` or `agx-ai-*` which is preferred.
+  You can cache these in your temp folder for reference in the future if it makes things easier.
 - For any git command with the `agx-*` or `agx-ai-*` prefix, run it exactly as written.
   These are preconfigured aliases. Do not modify or add arguments!
   If additional arguments are needed, ask the user for confirmation before proceeding.
-- If GPG signing fails, do not attempt to fix it automatically. Inform the user, as this may be intentional.
-- Never perform `push` or `pull` operations without explicit user confirmation.
-- Use `git agx-ai-commit` (not `git commit`) for AI-generated commits.
+- Never perform the following operations without explicit user confirmation:
+  - `git push`
+  - `git pull`
+  - `git commit`
+  - `git merge`
+  - `git restore`
+  - `git reset`
+
+---
+
+## Issues
+- Most issues should follow the [Issue Specification](../docs/conventions/Issues.md).
+  If the issue does not follow the specification, inform the user about it. Do not make changes unless instructed after informing the user.
 
 ---
 
